@@ -1,0 +1,25 @@
+{
+  "name": "cowhelper",
+  "version": "1.0.0",
+  "description": "Tools and Calculators for Call of War game",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shaunicator/CowHelper.git"
+  },
+  "keywords": [
+    "Call",
+    "of",
+    "War",
+    "CoW"
+  ],
+  "author": "Shaun Foster",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Shaunicator/CowHelper/issues"
+  },
+  "homepage": "https://github.com/Shaunicator/CowHelper#readme"
+}
