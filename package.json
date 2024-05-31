@@ -7,9 +7,6 @@
     "npm" : ">=10.5.2",
     "node" : ">=20.0.0"
   },
-  "scripts": {
-    "test": "test"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shaunicator/CowHelper.git"
