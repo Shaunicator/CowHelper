@@ -4,8 +4,8 @@
   "description": "Tools and Calculators for Call of War game",
   "main": "app.js",
   "engines" : { 
-    "npm" : ">=8.0.0 <9.0.0",
-    "node" : ">=20.0.0 <22.0.0"
+    "npm" : ">=10.5.2",
+    "node" : ">=20.0.0"
   },
   "scripts": {
     "test": "test"
