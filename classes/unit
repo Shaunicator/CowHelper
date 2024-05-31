@@ -1,0 +1,7 @@
+const Time = require('../utility/time');
+
+module.exports = class Unit{
+    constructor(){
+
+    }
+}
