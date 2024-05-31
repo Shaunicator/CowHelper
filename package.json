@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Tools and Calculators for Call of War game",
   "main": "app.js",
+  "engines" : { 
+    "npm" : ">=8.0.0 <9.0.0",
+    "node" : ">=20.0.0"
+  },
   "scripts": {
     "test": "test"
   },
@@ -11,9 +15,7 @@
     "url": "git+https://github.com/Shaunicator/CowHelper.git"
   },
   "keywords": [
-    "Call",
-    "of",
-    "War",
+    "Call of War",
     "CoW"
   ],
   "author": "Shaun Foster",
