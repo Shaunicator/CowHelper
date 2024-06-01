@@ -73,11 +73,11 @@ const server = http.createServer((req, res) => {
 
     let filePath =
         contentType === 'text/html' && url == '/'
-            ? path.join(__dirname, 'views', 'index.html')
+            ? path.join(__dirname, 'index.html')
             : contentType === 'text/html' && url.slice(-1) === '/'
-                ? path.join(__dirname, 'views', url, 'index.html')
+                ? path.join(__dirname, url, 'index.html')
                 : contentType === 'text/html'
-                    ? path.join(__dirname, 'views', url)
+                    ? path.join(__dirname, url)
                     : path.join(__dirname, url);
 
     //makes .html ext not required in browser
