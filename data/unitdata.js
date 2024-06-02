@@ -1,6 +1,4 @@
-const Time = require('../utility/time');
-
-exports.Unit = {
+Unit = {
     Infantry: {
         1: {
             Hitpoints: 15,
@@ -37,7 +35,7 @@ exports.Unit = {
                     Rare: 0,
                     Manpower: 0,
                     Money: 0,
-                    Time: new Time(0)
+                    Time: 0
                 },
                 Upkeep: {
                     Food: 0,
@@ -55,7 +53,7 @@ exports.Unit = {
                     Oil: 0,
                     Rare: 0,
                     Money: 0,
-                    Time: new Time(0,2,30,0)
+                    Time: 0
                 }
             }
         }

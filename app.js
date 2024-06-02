@@ -1,120 +1,69 @@
 //const assert = require('assert');
 console.clear();
-const http = require('http');
+console.log("[START]:\t Starting app.js script...")
+const express = require('express');
+const app = express();
 const path = require('path');
-const fs = require('fs');
-const { text } = require('express');
-const fsPromises = require('fs').promises;
-const Unit = require('./data/unitdata').Unit;
-
-//console.log(Unit.Infantry[1].Cost.Research.Time);
+const cors = require('cors');
+const corsOptions = require('./config/corsOptions')
+const { logger } = require('./middleware/logEvents')
+const errorHandler = require('./middleware/errorHandler');
+const { error } = require('console');
 
 const PORT = process.env.PORT || 3000;
-const FILE_404 = '404.html'
-const REDIRECTS = {
-    "oldpage": "newpage"
-}
 
-const serveFile = async (filePath, contentType, response) => {
-    console.log(`[++++]:\t\tServing file: ${path.parse(filePath).base}...`);
-    try {
-        const rawData = await fsPromises.readFile(
-            filePath,
-            !contentType.includes('image') ? 'utf8' : ''
-        );
-        const data = contentType === 'application/json'
-            ? JSON.parse(rawData) : rawData;
-        response.writeHead(
-            filePath.includes(FILE_404) ? 404 : 200,
-            { 'Content-Type': contentType });
-        response.end(
-            contentType === 'application/json' ? JSON.stringify(data) : data
-        );
-        console.log(`[info]:\t\t${path.parse(filePath).base} loaded successfuly. \n`);
+// custom middleware logging
+app.use(logger);
 
-    } catch (error) {
-        console.error(error);
-        response.statusCode = 500;
-        response.end();
+//Cross Origin Resource Sharing
+app.use(cors(corsOptions));
+
+app.use(express.urlencoded({ extended: false })); //url encocded for form data
+
+app.use(express.json()); //use for getting the json data from a response
+
+//serve static files. public being a specific folders ie css etc
+app.use(express.static(path.join(__dirname, '/public')))
+app.use('/subdir', express.static(path.join(__dirname, '/public')))
+
+// routes
+//add roots router here - see below of what needs to be moved
+app.use('/subdir', require('./routes/subdir'))
+//example for API, adapt for own needs
+app.use('/unitData', require('./routes/api/unitData'))
+
+
+//Express accepts regex
+//^=Starts with, $=ends "start with", | = or
+//(xxx)? makes optional
+
+//Moves these to a router in routes/root.js as per subdir.js
+app.get('^/$|/index(.html)?', (request, response) => {
+    response.sendFile('./index.html', { root: __dirname });
+    //response.sendFile(path.join(__dirname, 'index.html'));
+})
+//example for re-directs
+app.get('/old-page(.html)?', (request, response) => {
+    //302 by default (not permanent redirect)
+    response.redirect(301, '/new-page.html');
+})
+
+app.all('/*', (request, response) => {
+    response.status(404);
+    if (request.accepts('html')){
+        response.sendFile(path.join(__dirname, 'views', '404.html'))
     }
-}
-
-const server = http.createServer((req, res) => {
-    const url = req.url;
-    console.log(`\n[request]:\tStarting request for URL: ${url}`);
-
-    const fileExt = path.extname(url);
-    //console.log(`Current file extension: ${fileExt}`);
-
-    let contentType;
-    switch (fileExt) {
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        case '.json':
-            contentType = 'application/json';
-            break;
-        case 'jpg' || 'jpeg':
-            contentType = 'image/jpeg';
-            break;
-        case '.png':
-            contentType = 'image/png';
-            break;
-        case '.txt':
-            contentType = 'text/plain';
-            break;
-        default:
-            contentType = 'text/html';
-            break;
-    };
-
-    let filePath =
-        contentType === 'text/html' && url == '/'
-            ? path.join(__dirname, 'index.html')
-            : contentType === 'text/html' && url.slice(-1) === '/'
-                ? path.join(__dirname, url, 'index.html')
-                : contentType === 'text/html'
-                    ? path.join(__dirname, url)
-                    : path.join(__dirname, url);
-
-    //makes .html ext not required in browser
-    if (!fileExt && req.url.slice(-1) !== '/') {
-        filePath += '.html';
-        console.log("[info]:\t\t+++ Adding .html to file");
+    else if (request.accepts('json')){
+        response.json({error: "404 Not found"});
+    }else{
+        response.type('txt').send('404 not found');
     }
+})
 
-
-    const fileExists = fs.existsSync(filePath);
-    
-
-    if (fileExists) {
-        console.info(`[info]:\t\tFile ${path.parse(filePath).base} found.`);
-
-        serveFile(filePath, contentType, res);
-
-    } else {
-        console.error(`\n[error]:\tFile ${path.parse(filePath).base} not found:`);
-        console.log(path.parse(filePath));
-
-        if (path.parse(filePath).ext === '.html') {
-            console.log(`[info]:\t\tChecking for page ${path.parse(filePath).name} in redirects...`)
-            if ( REDIRECTS.hasOwnProperty(path.parse(filePath).name) ) {
-                console.log("[info]:\tAttempting redirect...")
-                console.log ("[log]:\tFile Name: " + path.parse(filePath).name);
-                res.writeHead(301, { 'Location': REDIRECTS[path.parse(filePath).name]+'.html' });
-                res.end();
-            } else {
-                console.log ("[info]:\t\tPage not found - loading 404") 
-                serveFile(path.join(__dirname, 'views', FILE_404), 'text/html', res) }
-        }
-    }
-});
+app.use(errorHandler);
 
 //Always at the end of server script
-server.listen(PORT, () =>
-    console.log(`-------------------------------------------------------
-[* START *]:\tServer started, listening on port ${PORT}
--------------------------------------------------------\n`));
+app.listen(PORT, () =>
+    console.log(`---------------------------------------------------------------
+[* START *]:\tExpress server started, listening on port ${PORT}
+---------------------------------------------------------------\n`));

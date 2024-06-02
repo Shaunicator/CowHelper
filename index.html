@@ -1,21 +1,50 @@
 <head>
-    <link rel="stylesheet" href="./style.css">
-    <script type="module" src="./utility/dom.js"></script>
+    <script type="text/javascript" src="dom.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
+
 
 <body>
     <h1 id="mainTitle">Welcome to the Call of War Helper (development version)</h1>
-    <div>
-        <label>New Title</label>
-        <input type="text">
-    
-        <p id = "serverText">ServerText</p>
-    </div>
-    <div>
-        <img  src="./images/buildInfo-Industry.png" data-filetype = "image">
-        <img src="./images/buildInfo-localIndustry.png" data-filetype = "image">
-    </div>
 
+    <div>
+        <label for="unitSelect">Choose a unit:</label>
+<select name="unitSelect" id="unitSelect">
+  <option value="Infantry">Infantry</option>
+</select>
+
+<label for="levelSelect">Choose a level:</label>
+<select name="levelSelect" id="levelSelect">
+    <option value="1">1</option>
+  </select>
+        <div class="table_component" role="region" tabindex="0">
+            <table>
+                <caption id="unitType"></caption>
+                <tbody>
+                    <tr>
+                        <td>Hitpoints</td>
+                        <td id="hitpoints"></td>
+                    </tr>
+                    <tr>
+                        <td>Speed</td>
+                        <td id="speed"></td>
+                    </tr>
+                    <tr>
+                        <td>View Range</td>
+                        <td id="view">2</td>
+                    </tr>
+                    <tr>
+                        <td>Attack Range</td>
+                        <td id="attackRange"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+        
+    </div>
+    <button onclick="getData('/unitData')">Get Data</button>
 
 </body>
 

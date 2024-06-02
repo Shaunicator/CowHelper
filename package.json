@@ -1,11 +1,11 @@
 {
   "name": "cowhelper",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Tools and Calculators for Call of War game",
   "main": "app.js",
-  "engines" : { 
-    "npm" : ">=10.5.2",
-    "node" : ">=20.0.0"
+  "engines": {
+    "npm": ">=10.5.2",
+    "node": ">=20.0.0"
   },
   "scripts": {
     "start": "node app.js"
@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/Shaunicator/CowHelper/issues"
   },
-  "homepage": "https://github.com/Shaunicator/CowHelper#readme"
+  "homepage": "https://github.com/Shaunicator/CowHelper#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^3.6.0",
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  }
 }
