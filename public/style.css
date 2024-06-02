@@ -1,3 +1,11 @@
 [data-filetype="image"]{
     width: 350px;
 }
+
+[data-imageType = "label"]{
+    height: 20px;
+}
+
+.table_component{
+    display: none;
+}
