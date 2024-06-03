@@ -46,13 +46,13 @@
                     "Money":30
                 },
                 "Research":{
-                    "Food":0,
-                    "Goods":0,
+                    "Food":1850,
+                    "Goods":850,
                     "Metal":0,
                     "Oil":0,
                     "Rare":0,
-                    "Money":0,
-                    "Time":0
+                    "Money":2500,
+                    "Time":"0:00:30:00"
                 }
             }
         }

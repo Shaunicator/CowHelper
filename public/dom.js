@@ -30,7 +30,7 @@ function getData(url,){
   .then(data => {
     dataObject = data;
   }).then(()=>{
-    document.getElementsByClassName("table_component")[0].style.display="block"
+    document.getElementsByClassName("infoCard")[0].style.display="block"
     document.getElementById("unitType").innerText = `${unitType}, Level ${level}`;
     document.getElementById('hitpoints').innerText = dataObject.unitData[unitType][level]["Hitpoints"];
     document.getElementById('speed').innerText = dataObject.unitData[unitType][level]["Speed"];

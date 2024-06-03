@@ -1,48 +1,64 @@
 <head>
     <script type="text/javascript" src="dom.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     
 </head>
 
 
 <body>
     <h1 id="mainTitle">Call of War Helper (development v0.1.0 )</h1>
+    <label for="unitSelect">Choose a unit:</label>
+    <select name="unitSelect" id="unitSelect">
+        <option value="Infantry">Infantry</option>
+      </select>
+      
+      <label for="levelSelect">Level:</label>
+      <select name="levelSelect" id="levelSelect">
+          <option value="1">1</option>
+        </select>
+        <button style="margin: 5px;" onclick="getData('/unitData')">Get Data</button>
+    <div class = "infoCard">
+        
 
-    <div>
-        <label for="unitSelect">Choose a unit:</label>
-<select name="unitSelect" id="unitSelect">
-  <option value="Infantry">Infantry</option>
-</select>
-
-<label for="levelSelect">Level:</label>
-<select name="levelSelect" id="levelSelect">
-    <option value="1">1</option>
-  </select>
         <div class="table_component" role="region" tabindex="0">
-            <table>
+            <table style="width:100%;">
                 <caption id="unitType"></caption>
                 <tbody>
                     <tr>
                         <td>
-                            <img src="images/Label_Hitpoints.png" data-imageType = "label"> 
-                            Hitpoints
+                            <div class="rowLabel">
+                                <img src="/images/Label_Hitpoints.png" data-imageType = "label"> 
+                                <p>Hitpoints</p>
+                            </div>
                         </td>
-                        <td id="hitpoints"></td>
+                        <td id="hitpoints" class = "rowValue"></td>
                     </tr>
                     <tr>
                         <td>
-                            <img src="images/Label_Speed.png" data-imageType = "label">
-                            Speed
+                            <div class="rowLabel">
+                                <img src="images/Label_Speed.png" data-imageType = "label">
+                                <p>Speed</p>
+                            </div>
                         </td>
-                        <td id="speed"></td>
+                        <td id="speed" class = "rowValue"></td>
                     </tr>
                     <tr>
-                        <td>View Range</td>
-                        <td id="view"></td>
+                        <td>
+                        <div class="rowLabel">
+                            <img src="/images/Label_ViewRange.png" data-imageType = "label"> 
+                            <p>View Range</p>
+                        </div>
+                    </td>
+                        <td id="view" class = "rowValue"></td>
                     </tr>
                     <tr>
-                        <td>Attack Range</td>
-                        <td id="attackRange"></td>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/Label_AttackRange.png" data-imageType = "label"> 
+                                <p>Attack Range</p>
+                            </div>
+                        </td>
+                        <td id="attackRange" class = "rowValue"></td>
                     </tr>
                 </tbody>
             </table>
@@ -50,7 +66,7 @@
 
         
     </div>
-    <button onclick="getData('/unitData')">Get Data</button>
+    
 
 </body>
 

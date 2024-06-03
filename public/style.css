@@ -1,11 +1,48 @@
+:root{
+    --light-tan: #DAD6C7;
+    --dark-text: #4C4839;
+}
+
+body{
+
+}
+.rowLabel p, .rowValue, #unitType{
+    color: #4C4839;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: small;
+    margin: 0;
+}
+#unitType{
+    font-size: medium;
+    font-weight: 600;
+}
+.rowValue{
+    font-weight: 500;
+}
+
 [data-filetype="image"]{
     width: 350px;
 }
 
 [data-imageType = "label"]{
     height: 20px;
+    margin-right: 3px;
+}
+table tr{
+    padding-right: 30px;
+    margin-right: 50px;
+  }
+
+.rowLabel{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.6em 0;
 }
 
-.table_component{
+.infoCard{
     display: none;
+    width: 500px; margin: 50 0; border: solid 1px;;
+    background-color: #DAD6C7;
+    border-radius: 5px;
 }
