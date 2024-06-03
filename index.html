@@ -7,6 +7,7 @@
 
 <body>
     <h1 id="mainTitle">Call of War Helper (development v0.1.0 )</h1>
+
     <label for="unitSelect">Choose a unit:</label>
     <select name="unitSelect" id="unitSelect">
         <option value="Infantry">Infantry</option>
@@ -15,6 +16,7 @@
       <label for="levelSelect">Level:</label>
       <select name="levelSelect" id="levelSelect">
           <option value="1">1</option>
+          <option value="2">2</option>
         </select>
         <button style="margin: 5px;" onclick="getData('/unitData')">Get Data</button>
 
@@ -26,7 +28,9 @@
                 <p id="unitType">Infantry Lvl. 1</p>
             </div>
         </div>
-        <p data-textType = "notice"><strong>*Note:</strong> values may be inaccurate during development</p>
+        
+        <div class="infoTables-container">
+        
         <div class="table_component" role="region" tabindex="0">
             <div class = "infoSubheading">
                 <p>UNIT OVERVIEW</p>
@@ -36,7 +40,7 @@
                     <tr>
                         <td>
                             <div class="rowLabel">
-                                <img src="/images/Label_Hitpoints.png" data-imageType = "label"> 
+                                <img src="/images/labels/Label_Hitpoints.png" data-imageType = "label"> 
                                 <p>Hitpoints</p>
                             </div>
                         </td>
@@ -45,7 +49,7 @@
                     <tr>
                         <td>
                             <div class="rowLabel">
-                                <img src="images/Label_Speed.png" data-imageType = "label">
+                                <img src="images/labels/Label_Speed.png" data-imageType = "label">
                                 <p>Speed</p>
                             </div>
                         </td>
@@ -54,7 +58,7 @@
                     <tr>
                         <td>
                         <div class="rowLabel">
-                            <img src="/images/Label_ViewRange.png" data-imageType = "label"> 
+                            <img src="/images/labels/Label_ViewRange.png" data-imageType = "label"> 
                             <p>View Range</p>
                         </div>
                     </td>
@@ -63,7 +67,7 @@
                     <tr>
                         <td>
                             <div class="rowLabel">
-                                <img src="/images/Label_AttackRange.png" data-imageType = "label"> 
+                                <img src="/images/labels/Label_AttackRange.png" data-imageType = "label"> 
                                 <p>Attack Range</p>
                             </div>
                         </td>
@@ -72,7 +76,103 @@
                 </tbody>
             </table>
         </div>
+        <div class="table_component" role="region" tabindex="0">
+            <div class = "infoSubheading">
+                <p>COMBAT STATISTICS</p>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Attack</th>
+                        <th>Defense</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Unarmored.png" data-imageType = "label"> 
+                                <p>Unarmored</p>
+                            </div>
+                        </td>
+                        <td id="atk-una"></td>
+                        <td id="def-una"></td>
+                    </tr>
+                    <tr>
+                            <td>
+                                <div class="rowLabel">
+                                    <img src="/images/labels/Label_Strength_Light.png" data-imageType = "label"> 
+                                    <p>Light Armor</p>
+                                </div>
+                            </td>
+                            <td id="atk-light"></td>
+                            <td id="def-light"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Heavy.png" data-imageType = "label"> 
+                                <p>Heavy Armor</p>
+                            </div>
+                        </td>
+                        <td id="atk-heavy"></td>
+                        <td id="def-heavy"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Air.png" data-imageType = "label"> 
+                                <p>Air</p>
+                            </div>
+                        </td>
+                        <td id="atk-air"></td>
+                        <td id="def-air"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Naval.png" data-imageType = "label"> 
+                                <p>Naval</p>
+                            </div>
+                        </td>
+                        <td id="atk-sea"></td>
+                        <td id="def-sea"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Sub.png" data-imageType = "label"> 
+                                <p>Submarine</p>
+                            </div>
+                        </td>
+                        <td id="atk-sub"></td>
+                        <td id="def-sub"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Building.png" data-imageType = "label"> 
+                                <p>Buildings</p>
+                            </div>
+                        </td>
+                        <td id="atk-build"></td>
+                        <td id="def-build"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/labels/Label_Strength_Morale.png" data-imageType = "label"> 
+                                <p>Province Morale</p>
+                            </div>
+                        </td>
+                        <td id="atk-morale"></td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
 
+        </div>
         <div class="table_component" role="region" tabindex="0">
             <div class = "infoSubheading">
                 <p>COSTS</p>
@@ -158,10 +258,15 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="rowLabel">
+                <img src="/images/icons/Icon_Time.png" data-imageType = "label"> 
+                <p>Minimumn time to build: </p>
+                <p id="prod-time"></p>
+            </div>
         </div>
-
-        
     </div>
-    
+    <p data-textType = "notice"><strong>*Note:</strong> values may be inaccurate during development</p>
+    </div>
+
 
 </body>    
