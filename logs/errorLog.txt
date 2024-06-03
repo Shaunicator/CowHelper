@@ -1,0 +1,1 @@
+03-59-2024	12:59:06.596	0c9f3cbf-69a0-4915-a300-860343a21a32	Error: ENOENT: no such file or directory, stat 'C:\Users\foste\OneDrive\Repos\CowHelper\routes\index.html'

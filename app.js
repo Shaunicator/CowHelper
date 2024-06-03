@@ -14,22 +14,16 @@ const PORT = process.env.PORT || 3000;
 
 // custom middleware logging
 app.use(logger);
-
 //Cross Origin Resource Sharing
 app.use(cors(corsOptions));
-
 app.use(express.urlencoded({ extended: false })); //url encocded for form data
-
 app.use(express.json()); //use for getting the json data from a response
 
 //serve static files. public being a specific folders ie css etc
-app.use(express.static(path.join(__dirname, '/public')))
-app.use('/subdir', express.static(path.join(__dirname, '/public')))
+app.use('/',express.static(path.join(__dirname, '/public')))
 
 // routes
-//add roots router here - see below of what needs to be moved
-app.use('/subdir', require('./routes/subdir'))
-//example for API, adapt for own needs
+app.use('/', require('./routes/root'));
 app.use('/unitData', require('./routes/api/unitData'))
 
 

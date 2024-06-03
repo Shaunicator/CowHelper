@@ -27,23 +27,23 @@
             },
             "Cost":{
                 "Production":{
-                    "Food":0,
-                    "Goods":0,
+                    "Food":930,
+                    "Goods":440,
                     "Metal":0,
                     "Oil":0,
                     "Rare":0,
-                    "Manpower":0,
-                    "Money":0,
-                    "Time":0
+                    "Manpower":970,
+                    "Money":970,
+                    "Time": "0:02:30:00"
                 },
                 "Upkeep":{
-                    "Food":0,
-                    "Goods":0,
+                    "Food":42,
+                    "Goods":20,
                     "Metal":0,
                     "Oil":0,
                     "Rare":0,
-                    "Manpower":0,
-                    "Money":0
+                    "Manpower":44,
+                    "Money":30
                 },
                 "Research":{
                     "Food":0,

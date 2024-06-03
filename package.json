@@ -2,13 +2,13 @@
   "name": "cowhelper",
   "version": "1.1.0",
   "description": "Tools and Calculators for Call of War game",
-  "main": "app.js",
+  "main": "app",
   "engines": {
     "npm": ">=10.5.2",
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
