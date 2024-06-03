@@ -17,12 +17,21 @@
           <option value="1">1</option>
         </select>
         <button style="margin: 5px;" onclick="getData('/unitData')">Get Data</button>
-    <div class = "infoCard">
-        
 
+    <div class = "infoCard">
+        <div class="infoCard-title"><h2>UNIT INFO</h2></div>
+        <div class="unitPortrait">
+            <div class="unitTypeinfo">
+                <img src="/images/units_portrait/infantry_1_s3.png" data-imageType="unitIcon">
+                <p id="unitType">Infantry Lvl. 1</p>
+            </div>
+        </div>
+        <p data-textType = "notice"><strong>*Note:</strong> values may be inaccurate during development</p>
         <div class="table_component" role="region" tabindex="0">
-            <table style="width:100%;">
-                <caption id="unitType"></caption>
+            <div class = "infoSubheading">
+                <p>UNIT OVERVIEW</p>
+            </div>
+            <table>
                 <tbody>
                     <tr>
                         <td>
@@ -62,11 +71,97 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <div class="table_component" role="region" tabindex="0">
+            <div class = "infoSubheading">
+                <p>COSTS</p>
             </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Production</th>
+                        <th>Upkeep</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/food.png" data-imageType = "label"> 
+                                <p>Food</p>
+                            </div>
+                        </td>
+                        <td id="prod-food"></td>
+                        <td id="upk-food"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/goods.png" data-imageType = "label"> 
+                                <p>Goods</p>
+                            </div>
+                        </td>
+                        <td id="prod-goods"></td>
+                        <td id="upk-goods"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/Metal.png" data-imageType = "label"> 
+                                <p>Metal</p>
+                            </div>
+                        </td>
+                        <td id="prod-metal"></td>
+                        <td id="upk-metal"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/oil.png" data-imageType = "label"> 
+                                <p>Oil</p>
+                            </div>
+                        </td>
+                        <td id="prod-oil"></td>
+                        <td id="upk-oil"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/rare.png" data-imageType = "label"> 
+                                <p>Rare</p>
+                            </div>
+                        </td>
+                        <td id="prod-rare"></td>
+                        <td id="upk-rare"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/manpower.png" data-imageType = "label"> 
+                                <p>Manpower</p>
+                            </div>
+                        </td>
+                        <td id="prod-mp"></td>
+                        <td id="upk-mp"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="rowLabel">
+                                <img src="/images/icons/resources/money.png" data-imageType = "label"> 
+                                <p>Money</p>
+                            </div>
+                        </td>
+                        <td id="prod-money"></td>
+                        <td id="upk-money"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         
     </div>
     
 
-</body>
-
+</body>    

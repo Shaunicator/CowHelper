@@ -31,11 +31,27 @@ function getData(url,){
     dataObject = data;
   }).then(()=>{
     document.getElementsByClassName("infoCard")[0].style.display="block"
-    document.getElementById("unitType").innerText = `${unitType}, Level ${level}`;
+    document.getElementById("unitType").innerText = `${unitType}, Lvl. ${level}`;
     document.getElementById('hitpoints').innerText = dataObject.unitData[unitType][level]["Hitpoints"];
     document.getElementById('speed').innerText = dataObject.unitData[unitType][level]["Speed"];
     document.getElementById('view').innerText = dataObject.unitData[unitType][level]["ViewRange"];
     document.getElementById('attackRange').innerText = dataObject.unitData[unitType][level]["AttackRange"];
+
+    document.getElementById('prod-food').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Food"];
+    document.getElementById('prod-goods').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Goods"];
+    document.getElementById('prod-metal').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Metal"];
+    document.getElementById('prod-oil').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Oil"];
+    document.getElementById('prod-rare').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Rare"];
+    document.getElementById('prod-mp').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Manpower"];
+    document.getElementById('prod-money').innerText = dataObject.unitData[unitType][level]["Cost"]["Production"]["Money"];
+
+    document.getElementById('upk-food').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Food"];
+    document.getElementById('upk-goods').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Goods"];
+    document.getElementById('upk-metal').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Metal"];
+    document.getElementById('upk-oil').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Oil"];
+    document.getElementById('upk-rare').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Rare"];
+    document.getElementById('upk-mp').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Manpower"];
+    document.getElementById('upk-money').innerText = dataObject.unitData[unitType][level]["Cost"]["Upkeep"]["Money"];
   })
 }
 

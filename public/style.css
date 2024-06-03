@@ -1,37 +1,29 @@
-:root{
-    --light-tan: #DAD6C7;
-    --dark-text: #4C4839;
-}
-
 body{
-
-}
-.rowLabel p, .rowValue, #unitType{
-    color: #4C4839;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: small;
+    color: #4C4839;
+    padding: 10px 50px;
+    
+}
+
+.rowLabel p, .rowValue, #unitType, p, h1, h2{
     margin: 0;
+    font-size: small;
+}
+[data-textType = "notice"]{
+    font-size: small;
 }
 #unitType{
-    font-size: medium;
-    font-weight: 600;
+    color: white;
 }
 .rowValue{
     font-weight: 500;
-}
-
-[data-filetype="image"]{
-    width: 350px;
 }
 
 [data-imageType = "label"]{
     height: 20px;
     margin-right: 3px;
 }
-table tr{
-    padding-right: 30px;
-    margin-right: 50px;
-  }
+
 
 .rowLabel{
     display: flex;
@@ -42,7 +34,75 @@ table tr{
 
 .infoCard{
     display: none;
-    width: 500px; margin: 50 0; border: solid 1px;;
+    width: 400px; 
+    margin: 10 0; 
+    border: solid 2px #DAD6C7;
     background-color: #DAD6C7;
     border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+}
+.infoCard-title{
+    width: 100%;
+    background-color: #1D1B12;
+    background-image: url('./images/factions/1_s9.png');
+    background-position: right;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain;
+    display: flex;
+    
+}
+.infoCard-title h2{
+    padding: 10px 0 10px 10px;
+    color: white;
+    font-size: large;
+}
+table{
+    width: 90%;
+    margin: 20px;
+    font-size: small;
+}
+th{
+    text-align: left;
+}
+.table_component{
+    margin: 10px;
+    border: solid 1px #1D1B12;
+    border-radius: 5px;
+}
+
+.infoSubheading{
+    padding: 5px 2px;
+    background-image: linear-gradient(to right, #1D1B12, #595444);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.unitPortrait{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 50px;
+    background-image: 
+    /*url('./images/units_portrait/infantry_1_s3.png'), */ url('./images/textures/unit_info_background.jpg');
+    background-position:center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+}
+[data-imageType = "unitIcon"]{
+    height: 60px;
+    margin-right: 3px;
+}
+
+.unitTypeInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    padding: 0px 5px 10px 5px;    
+    background-image: linear-gradient(to top, rgba(0,0,0,1),rgba(0,0,0,.75),rgba(0,0,0,0));
+    font-weight: 600;
+    font-size: medium;
 }
