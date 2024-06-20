@@ -11,3 +11,5 @@ export const RESOURCES = ["Food", "Goods", "Metal", "Oil", "Rare", "Manpower", "
 export const CLASSES = ["Unarmored", "Light","Heavy","Air","Ship","Sub","Building","Morale"];
 export const BASICS = ["Hitpoints", "Speed", "ViewRange", "AttackRange"];
 
+export const UNIT_IMAGES = {
+    portraitPath: './custom/cow/shared/images/units/portraits/'}

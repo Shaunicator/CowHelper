@@ -15,6 +15,7 @@ function initPage(pageID){
   document.addEventListener('unitSelected', (event) => {
     console.log("Custom event fired");
     const unitValue = event.detail.unitValue;
+    document.querySelector('.unitTypeinfo img').src=`${COW_LIST.UNIT_IMAGES.portraitPath}${unitValue.toLowerCase()}_1.png`
     COW_API.populateUnitData(unitValue);
   });
  let fn = CLOG.start( `Page: ${pageID}` )

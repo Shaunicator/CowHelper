@@ -6,116 +6,16 @@ import * as COW_LIST from '../shared/cow_reference.js'
 export class UnitSelect extends HTMLElement {
     constructor() {
       super();
-      const active = {
-        category: "",
-        unit: ""
-      }
+      const imagePath='./custom/cow/shared/images/units'
       // Create a shadow root, append to Shadow DOM
       this.attachShadow({ mode: "open" });
     }
     connectedCallback(){
       const svgPath = './custom/cow/shared/images/icons/unitCategories/iconDefinitions.svg';
       this.shadowRoot.innerHTML=`
-      <style>
-      :root {
-        --light: #DAD6C7;
-        --dark: #595444;
-        --text-dark: #1D1B12;
-      }
-        .icon-bar, .icon-set{
-          display: flex;
-          flex-flow: row no-wrap;
-          width: 100%;
-    }
-          .icon-set{display: none;}
-        .icon-bar {
-
-          background-color: #7d7b73;
-          background-image: url(./custom/cow/shared/images/textures/texture1.jpg);
-          background-position:bottom; /* Center the image */
-         /* background-repeat: no-repeat; /* Do not repeat the image */ */
-          /*background-size: cover; */
-          border-radius: 5px;
-          background-blend-mode: multiply;
-        }
-        .icon-bar.units a{
-        background-color: var(--light);
-        color: var(--text-dark);
-        mix-blend-mode: overlay;
-        font-size: small;
-
-        }
-
-          .icon-bar a {
-          text-align: center;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          padding: 12px 0;
-          transition: all 0.1s ease-out; /* Add transition for hover effects */
-
-          color: var(--light);
-          font-size: small;
-          display:flex;
-          flex-direction: column;
-          text-decoration: none;
-        }
-
-        svg {
-          height: 40px;
-          width: 100%;
-          fill: currentColor;
-          transition: all 0.1s ease-out; /* Add transition for hover effects */
-
-        }
-        .icon-bar a:hover{
-         box-shadow: inset 0px 0px 85px rgba(0, 0, 0, 0.6);
-         cursor: crosshair;
-         }
-
-        .icon-bar a:hover .i{
-          fill: currentColor;
-          filter: drop-shadow( 0px 0px 12px rgba(218, 214, 199, 1));
-
-          mix-blend-mode: screen;
-          }
-
-        .icon-bar.category a {
-        border-bottom: solid 3px #1D1B12;
-        }
-
-        .icon-bar a:hover{
-          background-color: var(--dark);
-          color: var(--light); 
-          mix-blend-mode: hard-light;
-        }
-          a.active {
-          background-color: var(--light);
-          font-weight: 800;
-          color: var(--text-dark);
-          
-          border-bottom: none;
-          box-shadow: inset 0 20px  40px rgba(0, 0, 0, 0.5);
-          
-          }
-
-          .icon-bar.category > a.active {
-          border: solid 3px #1D1B12;
-          border-radius: 10px 10px 0 0;
-          border-bottom: none;
-          mix-blend-mode: overlay;
-          box-shadow: inset 0px 38px 26px -29px rgba(0,0,0,0.67);
-          }
-          .active .i{
-          fill: currentColor;
-          height: 37px;
-          width: 100%
-          }
-
-        </style>
-    
-
-    <div class="icon-bar category" data-type='categories'>
+      <link rel="stylesheet" href="./custom/cow/shared/cow.css">
+      <div class="container">
+      <div class="icon-bar category" data-type='categories'>
 
       <a  data-category="Infantry" href="#">
         <svg class="i"><use href="${svgPath}#category-infantry"/></svg>
@@ -150,12 +50,30 @@ export class UnitSelect extends HTMLElement {
 
   <div class="icon-bar units" data-type='units'>
         <div class="icon-set" data-iconset="infantry">
-          <a  href="#">Militia</a>
-          <a  href="#">Infantry</a>
-          <a  href="#">Motorized Infantry</a>
-          <a  href="#">Mechanized Infantry</a>
-          <a  href="#">Commandos</a>
-          <a  href="#">Paratroopers</a>
+          <a href="#" data-unittype="militia">
+            <img src="./custom/cow/shared/images/units/portraits/militia_1.png">
+            <span>Militia</span>
+          </a>
+          <a href="#" data-unittype="infantry">
+            <img src="./custom/cow/shared/images/units/portraits/infantry_1.png">
+            <span>Infantry</span>
+          </a>
+          <a href="#" data-unittype="motorizedinfantry">
+            <img src="./custom/cow/shared/images/units/portraits/motorizedinfantry_1.png">
+            <span>Motorized Infantry</span>
+          </a>
+          <a href="#" data-unittype="mechanizedinfantry">
+            <img src="./custom/cow/shared/images/units/portraits/mechanizedinfantry_1.png">
+            <span>Mechanized Infantry</span>
+          </a>
+          <a href="#" data-unittype="commando">
+            <img src="./custom/cow/shared/images/units/portraits/commando_1.png">
+            <span>Commando</span>
+          </a>
+          <a href="#" data-unittype="paratrooper">
+            <img src="./custom/cow/shared/images/units/portraits/paratrooper_1.png">
+            <span>Paratrooper</span>
+          </a>
       </div>
        <div class="icon-set" data-iconset="tanks">
           <a  href="#">Armoured Car</a>
@@ -194,6 +112,7 @@ export class UnitSelect extends HTMLElement {
           <a  href="#">Nuclear Bomber </a>
           <a  href="#">Nuclear Rocket</a>
     </div>
+  </div>
   </div>
   <div id=unitInfo>
   <slot></slot>
@@ -235,6 +154,9 @@ export class UnitSelect extends HTMLElement {
     subMenuItems.forEach(item => {
       item.addEventListener('click', (event) => {
         event.preventDefault();
+
+        subMenuItems.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
 
         // Set the unit value
         const unitValue = item.textContent.trim();
