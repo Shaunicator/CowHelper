@@ -1,1 +1,20 @@
 03-59-2024	12:59:06.596	0c9f3cbf-69a0-4915-a300-860343a21a32	Error: ENOENT: no such file or directory, stat 'C:\Users\foste\OneDrive\Repos\CowHelper\routes\index.html'
+15-24-2024	13:24:27.2427	7131147d-9b2a-4c1a-9a74-8d2969ee5cd4	ReferenceError: unitData is not defined
+15-24-2024	13:24:48.2448	2cd1c1f5-660f-4dbe-9cb6-33af38b58ec1	ReferenceError: unitData is not defined
+15-25-2024	13:25:25.2525	7dec2fb8-ffaf-438b-841c-c248677b3847	ReferenceError: unitData is not defined
+15-26-2024	13:26:39.2639	4ee685de-9592-4d54-ad97-a24967a2dab2	ReferenceError: unitData is not defined
+15-27-2024	13:27:00.270	60b1a7a4-dcb7-455a-9ba3-eaccaeff2776	ReferenceError: filteredResponse is not defined
+15-58-2024	13:58:57.5857	fc58d89b-98db-466e-90d7-c6a1003ba41b	TypeError: Cannot read properties of undefined (reading 'Militia')
+15-59-2024	13:59:08.598	f5b1d371-b496-4fd7-8938-b88c76d7e03a	TypeError: Cannot read properties of undefined (reading 'Militia')
+15-02-2024	14:02:27.227	947808f7-f051-4910-9394-9aaa10d23ca0	ReferenceError: unitData is not defined
+15-03-2024	14:03:25.325	c87d4c73-0e1a-4d59-8d70-a809b8cf1caa	TypeError: Cannot read properties of undefined (reading 'Militia')
+15-04-2024	14:04:04.44	051bcccf-cbe5-49ef-af0f-b534262e0c5a	TypeError: Cannot read properties of undefined (reading 'Infantry')
+15-39-2024	14:39:39.3939	e19dfdce-2080-420b-8f29-62daf3bdbc6a	TypeError: Cannot read properties of undefined (reading 'undefined')
+15-41-2024	14:41:25.4125	e85c7df9-5aa3-470f-84f4-21db01aa1daf	ReferenceError: unit is not defined
+15-43-2024	14:43:06.436	65ad69cc-9d74-4864-a7a8-1372670581e9	TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))
+15-43-2024	14:43:52.4352	eea7c209-8890-4200-85a5-10d2d0a6a7da	TypeError: Cannot read properties of undefined (reading '1')
+15-45-2024	14:45:36.4536	8f23b164-f8da-4b6d-aabd-02ef3ac76734	TypeError: Cannot read properties of undefined (reading '1')
+15-46-2024	14:46:03.463	8d56a9a5-1139-4c7f-a0b2-4cb8a2268dd8	TypeError: Cannot read properties of undefined (reading '1')
+15-49-2024	14:49:14.4914	d559a7cd-679f-44ca-80ed-4e4c0e9faac7	TypeError: Cannot read properties of undefined (reading '1')
+15-03-2024	15:03:15.315	0ee79a48-8430-4efc-8859-854aa985f4f0	TypeError: Cannot read properties of undefined (reading '1')
+15-10-2024	15:10:49.1049	acd85a07-8459-41df-a847-76c85427e3b1	TypeError: Cannot read properties of undefined (reading '1')

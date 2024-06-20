@@ -1,7 +1,69 @@
-const Time = require('../utility/time');
+const Time = require('../public/utility/time');
 
-module.exports = class Unit{
+class Unit{
+    type = "";
+    doctrine = "";
+    level = 1;
+    hitpoints = 0;
+    speed = 0;
+    viewRange = 0;
+    attackRange = 0;
+    Strength = {
+        Attack:{
+            unarmored:0,
+            light:0,
+            heavy:0,
+            air:0,
+            ship:0,
+            sub:0,
+            building:0,
+            morale:0
+        },
+        Defense:{
+            unarmored:0,
+            light:0,
+            heavy:0,
+            air:0,
+            ship:0,
+            sub:0,
+            building:0,
+            morale:0 
+        }
+    };
+    Cost = {
+        Production:{
+            food:0,
+            goods:0,
+            metal:0,
+            oil:0,
+            rare:0,
+            manpower:0,
+            money:0,
+            time:0
+        },
+        Upkeep:{
+            food:0,
+            goods:0,
+            metal:0,
+            oil:0,
+            rare:0,
+            manpower:0,
+            money:0
+        },
+        Upgrade:{
+            food:0,
+            goods:0,
+            metal:0,
+            oil:0,
+            rare:0,
+            manpower:0,
+            money:0,
+            time:0
+        }
+    }
     constructor(){
+    }
+    buildInfoCard(){
 
     }
 }

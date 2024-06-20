@@ -1,0 +1,29 @@
+Replace $$ with document.querySelectorAll in the examples:
+
+$$('input') //Every input
+$$('[id]') //Every element with id
+$$('[id="c2"]') //Every element with id="c2"
+$$('input,[id]') //Every input + every element with id
+$$('input[id]') //Every input including id
+$$('input[id="c2"]') //Every input including id="c2"
+$$('input#c2') //Every input including id="c2" (same as above)
+$$('input#c2[value="DE039230952"]') //Every input including id="c2" and value="DE039230952"
+$$('input#c2[value^="DE039"]') //Every input including id="c2" and value has content starting with DE039
+$$('input#c2[value$="0952"]') //Every input including id="c2" and value has content ending with 0952
+$$('input#c2[value*="39230"]') //Every input including id="c2" and value has content including 39230
+
+Use the examples above directly, without the need for additional library, just by adding:
+const $$ = document.querySelectorAll.bind(document);
+
+Some additions:
+
+$$(.) //The same as $([class])
+$$(div > input) //div is parent tag to input
+document.querySelector() //equals to $$()[0] or $()
+
+Multiple "nots", input that is NOT hidden and NOT disabled:
+:not([type="hidden"]):not([disabled])
+
+Also did you know you can do this:
+node.parentNode.querySelectorAll('div');
+Which will effectively find all divs in "node" and below recursively, HOT DAMN!

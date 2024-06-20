@@ -6,6 +6,8 @@ body{
     background-position:bottom; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: contain;
+    --light: #DAD6C7;
+    --dark: #595444;
 }
 
 .rowLabel p, .rowValue, #unitType, p, h1, h2{
@@ -23,22 +25,11 @@ body{
     font-weight: 500;
 }
 
-[data-imageType = "label"]{
-    height: 20px;
-    margin-right: 3px;
-}
-
-
-.rowLabel{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0.3em 0;
-}
 
 .infoCard{
     display: none;
-width:fit-content;
+    /*width:fit-content;*/
+    width: 100%;
     margin: 10 0; 
     border: solid 2px #DAD6C7;
     background-color: #DAD6C7;
@@ -61,35 +52,7 @@ width:fit-content;
     color: white;
     font-size: large;
 }
-.infoTables-container{
-    display:flex;
-    flex-direction: row;
-    
-}
-table{
-    width: 90%;
-    margin: 20px;
-    font-size: small;
-}
-th{
-    text-align: left;
-}
-.table_component{
-   min-width: 300px;
-    margin: 10px;
-    border: solid 1px #1D1B12;
-    border-radius: 5px;
-}
 
-.infoSubheading{
-    padding: 5px 2px;
-    background-image: linear-gradient(to right, #1D1B12, #595444);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-}
 
 .unitPortrait{
     display: flex;
@@ -120,3 +83,14 @@ th{
 #prod-time{
     margin-left: 3px;
 }
+
+.sectionContainer{
+    width: 90%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
