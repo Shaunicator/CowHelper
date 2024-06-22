@@ -7,7 +7,7 @@ export const UNIT_TYPES = {
     Secret: ["Rocket Artillery", "Self-Propelled Rocket Artillery", "Railroad Gun", "Flying Bomb", "Rocket", "Rocket Fighter", "Atomic Bomber", "Nuclear Bomber", "Nuclear Rocket"]
 };
 
-export const RESOURCES = ["Food", "Goods", "Metal", "Oil", "Rare", "Manpower", "Money"];
+export const RESOURCES = ["Food", "Goods", "Metal", "Oil", "Rare", "Manpower", "Money", "Time"];
 export const CLASSES = ["Unarmored", "Light","Heavy","Air","Ship","Sub","Building","Morale"];
 export const BASICS = ["Hitpoints", "Speed", "ViewRange", "AttackRange"];
 

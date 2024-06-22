@@ -14,92 +14,121 @@ export class UnitSelect extends HTMLElement {
       const svgPath = './custom/cow/shared/images/icons/unitCategories/iconDefinitions.svg';
       this.shadowRoot.innerHTML=`
       <link rel="stylesheet" href="./custom/cow/shared/cow.css">
+
       <div class="container">
       <div class="icon-bar category" data-type='categories'>
 
-      <a  data-category="Infantry" href="#">
+      <a href="#" data-category="Infantry" title="Infantry">
         <svg class="i"><use href="${svgPath}#category-infantry"/></svg>
-        <span>Infantry</span>
       </a>
 
-      <a data-category="Tanks" href="#">
+      <a href="#" data-category="Tanks" title="Tanks">
         <svg class="i"><use href="${svgPath}#category-tanks"/></svg>
-        <span>Tanks</span>
       </a>
 
       <a data-category="Ordnance" href="#" >
         <svg class="i"><use href="${svgPath}#category-ordnance"/></svg>
-        <span>Ordnance</span>
       </a>
 
       <a data-category="Air" href="#">
         <svg class="i"><use href="${svgPath}#category-air"/></svg>
-        <span>Air</span>
       </a>
 
       <a data-category="Naval" href="#">
         <svg class="i"><use href="${svgPath}#category-naval"/></svg>
-        <span>Naval</span>
       </a>
       <a data-category="Secret" href="#" >
         <svg class="i"><use href="${svgPath}#category-secret"/></svg>
-        <span>Secret</span>
       </a>
 
   </div>
 
   <div class="icon-bar units" data-type='units'>
         <div class="icon-set" data-iconset="infantry">
-          <a href="#" data-unittype="militia">
+          <a href="#" data-unittype="Militia">
             <img src="./custom/cow/shared/images/units/portraits/militia_1.png">
-            <span>Militia</span>
           </a>
-          <a href="#" data-unittype="infantry">
+          <a href="#" data-unittype="Infantry">
             <img src="./custom/cow/shared/images/units/portraits/infantry_1.png">
-            <span>Infantry</span>
           </a>
-          <a href="#" data-unittype="motorizedinfantry">
+          <a href="#" data-unittype="Motorized Infantry">
             <img src="./custom/cow/shared/images/units/portraits/motorizedinfantry_1.png">
-            <span>Motorized Infantry</span>
           </a>
           <a href="#" data-unittype="mechanizedinfantry">
             <img src="./custom/cow/shared/images/units/portraits/mechanizedinfantry_1.png">
-            <span>Mechanized Infantry</span>
           </a>
           <a href="#" data-unittype="commando">
             <img src="./custom/cow/shared/images/units/portraits/commando_1.png">
-            <span>Commando</span>
           </a>
           <a href="#" data-unittype="paratrooper">
             <img src="./custom/cow/shared/images/units/portraits/paratrooper_1.png">
-            <span>Paratrooper</span>
           </a>
       </div>
        <div class="icon-set" data-iconset="tanks">
-          <a  href="#">Armoured Car</a>
-          <a  href="#">Light Tank</a>
-          <a  href="#">Medium Tank</a>
-          <a  href="#">Heavy Tank</a>
-          <a  href="#">Tank Destroyer</a>
+          <a href="#" data-unittype="armoredcar">
+            <img src="./custom/cow/shared/images/units/portraits/armoredcar_1.png">
+          </a>
+          <a href="#" data-unittype="lighttank">
+            <img src="./custom/cow/shared/images/units/portraits/lighttank_1.png">
+          </a>
+          <a href="#" data-unittype="mediumtank">
+            <img src="./custom/cow/shared/images/units/portraits/mediumtank_1.png">
+          </a>
+          <a href="#" data-unittype="heavytank">
+            <img src="./custom/cow/shared/images/units/portraits/heavytank_1.png">
+          </a>
+          <a href="#" data-unittype="tankdestroyer">
+            <img src="./custom/cow/shared/images/units/portraits/tankdestroyer_1.png">
+          </a>
     </div>
-           <div class="icon-set" data-iconset="ordnance">
-          <a  href="#">Anti-Tank Gun</a>
-          <a  href="#">Artillery</a>
-          <a  href="#">Anti-Air Gun</a>
-          <a  href="#">SP Artillery</a>
-          <a  href="#">SP Anti-Air</a>
+          <div class="icon-set" data-iconset="ordnance">
+            <a href="#" data-unittype="antitankgun">
+            <img src="./custom/cow/shared/images/units/portraits/antitankgun_3.png">
+          </a>
+          <a href="#" data-unittype="artillery">
+            <img src="./custom/cow/shared/images/units/portraits/artillery_1.png">
+          </a>
+          <a href="#" data-unittype="antiair">
+            <img src="./custom/cow/shared/images/units/portraits/antiair_1.png">
+          </a>
+          <a href="#" data-unittype="spartillery">
+            <img src="./custom/cow/shared/images/units/portraits/spartillery_1.png">
+          </a>
+          <a href="#" data-unittype="spantiair">
+            <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+          </a>
     </div>
            <div class="icon-set" data-iconset="air">
-          <a  href="#">Interceptor</a>
-          <a  href="#">Tactical Bomber</a>
-          <a  href="#">Attack Bomber</a>
-          <a  href="#">Strategic Bomber</a>
-          <a  href="#">Naval Bomber</a>
+              <a href="#" data-unittype="interceptor">
+                <img src="./custom/cow/shared/images/units/portraits/interceptor_1.png">
+              </a>
+
+              <a href="#" data-unittype="tacticalbomber">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
+
+              <a href="#" data-unittype="attackbomber">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
+
+              <a href="#" data-unittype="strategicbomber">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
+
+              <a href="#" data-unittype="navalbomber">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
     </div>
            <div class="icon-set" data-iconset="naval">
-          <a  href="#">Destroyer</a>
-          <a  href="#">Submarine</a>
-          <a  href="#">Cruiser</a>
+              <a href="#" data-unittype="destroyer">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
+              <a href="#" data-unittype="submarine">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
+              <a href="#" data-unittype="cruiser">
+                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
+              </a>
           <a  href="#">Battleship</a>
           <a  href="#">Aircraft Carrier</a>
           <a  href="#">Troop Transport</a>
@@ -159,7 +188,9 @@ export class UnitSelect extends HTMLElement {
         item.classList.add('active');
 
         // Set the unit value
-        const unitValue = item.textContent.trim();
+        //const unitValue = item.textContent.trim();
+
+        const unitValue = item.getAttribute('data-unittype');
 
         // Dispatch a custom event with the unit value
         this.dispatchEvent(new CustomEvent('unitSelected', {
@@ -191,45 +222,17 @@ export class StatsTable extends HTMLElement {
 /* const node = document.importNode(template.content, true);
     this.shadowRoot.appendChild(node); */
     let type = (this.getAttribute('data-type'));
-    if (type !== "overview" && type !== "combat" && type !== "costs"){
-      throw new Error("Invalid Stats Table type - should be overview, combat or costs");
+    if (type !== "overview" && type !== "combat" && type !== "costs" && type !== "research"){
+      throw new Error("Invalid Stats Table type - should be overview, combat, costs or research");
     }
     let config = this.setConfig(type);   
     
     //const headers = this.dataset.headers.split(',').map(header => header.trim());
     const headers = config.headers.split(",").map(header => header.trim());
     this.shadowRoot.innerHTML = `
-    <style>
-      .container { 
-        min-width: 300px;
-        min-height: 300px;
-        height: 100%;
-        border: solid 1px #1D1B12;
-        border-radius: 5px;
-      }
+    <link rel="stylesheet" href="./custom/cow/shared/cow.css">
 
-      table { width: 90%; font-size: 0.8em; margin: 10px;  }
-
-      td:not(:first-child) { text-align: center; }
-
-      .rowLabel { display: flex; flex-direction: row; align-items: center; margin: 0.3em 0; }
-
-      .rowLabel img { height: 20px; margin-right: 3px; }
-
-      .heading { 
-        padding: 5px 2px;
-        background-image: linear-gradient(to right, #1D1B12, #595444);
-        font-size: small;
-        color: white;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600; 
-      }
-    </style>
-
-    <div class="container">
+    <div class="container-tables">
       <div class = "heading">
         <span id = "title"></span>
       </div>
@@ -244,7 +247,7 @@ export class StatsTable extends HTMLElement {
       </tbody>
     </table>
     <slot></slot>
-    </div`
+    </div>`
     this.shadowRoot.querySelector('span#title').textContent = config.title;
     const tableBody = this.shadowRoot.querySelector('tbody');
     config.sourceList.forEach(item => {
@@ -302,6 +305,12 @@ export class StatsTable extends HTMLElement {
         config.iconPath='./custom/cow/shared/images/resources/'
         config.sourceList=COW_LIST.RESOURCES
         break;
+      case 'research':
+        config.title="Research";
+        config.headers=",Cost";
+        config.prefix = '';
+        config.iconPath='./custom/cow/shared/images/resources/';
+        config.sourceList=COW_LIST.RESOURCES;
     }
     return config
     }

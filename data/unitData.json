@@ -1,6 +1,7 @@
  { 
     "Militia": {
         "1":{
+            "Elite": false,
             "Hitpoints":15,
             "Speed":24,
             "ViewRange":42,
@@ -34,7 +35,241 @@
                     "Oil":"-",
                     "Rare":"-",
                     "Manpower":780,
-                    "Money":540,
+                    "Money": 540,
+                    "Time": "0:00:45"
+                },
+                "Upkeep":{
+                    "Food":42,
+                    "Goods":20,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":44,
+                    "Money":30
+                },
+                "Research":{
+                    "Food":1850,
+                    "Goods":850,
+                    "Metal":0,
+                    "Oil":0,
+                    "Rare":0,
+                    "Money":2500,
+                    "Time":"0:00:5:00"
+                }
+            }
+        },
+        "2":{
+            "Elite": false,
+            "Hitpoints":20,
+            "Speed":39,
+            "ViewRange":42,
+            "AttackRange":0,
+            "Strength":{
+                "Attack":{
+                    "Unarmored":4.0,
+                    "Light":2.0,
+                    "Heavy":1.5,
+                    "Air":1.5,
+                    "Ship":1.0,
+                    "Sub":1.0,
+                    "Building":0.3,
+                    "Morale":0.1
+                 },
+                "Defense":{
+                    "Unarmored":6.0,
+                    "Light":3.0,
+                    "Heavy":2.3,
+                    "Air":2.3,
+                    "Ship":1.5,
+                    "Sub":1.5,
+                    "Building":0.4
+                }
+            },
+            "Cost":{
+                "Production":{
+                    "Food":980,
+                    "Goods":470,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":1010,
+                    "Money":770,
+                    "Time": "0:03:30:00"
+                },
+                "Upkeep":{
+                    "Food":42,
+                    "Goods":21,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":46,
+                    "Money":35
+                },
+                "Research":{
+                    "Food":2000,
+                    "Goods":950,
+                    "Metal":0,
+                    "Oil":0,
+                    "Rare":0,
+                    "Money":2750,
+                    "Time":"0:5:00:00"
+                }
+            }
+        },
+        "3":{
+            "Elite": false,
+            "Hitpoints":20,
+            "Speed":39,
+            "ViewRange":42,
+            "AttackRange":0,
+            "Strength":{
+                "Attack":{
+                    "Unarmored":4.0,
+                    "Light":2.0,
+                    "Heavy":1.5,
+                    "Air":1.5,
+                    "Ship":1.0,
+                    "Sub":1.0,
+                    "Building":0.3,
+                    "Morale":0.1
+                 },
+                "Defense":{
+                    "Unarmored":6.0,
+                    "Light":3.0,
+                    "Heavy":2.3,
+                    "Air":2.3,
+                    "Ship":1.5,
+                    "Sub":1.5,
+                    "Building":0.4
+                }
+            },
+            "Cost":{
+                "Production":{
+                    "Food":980,
+                    "Goods":470,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":1010,
+                    "Money":770,
+                    "Time": "0:03:30:00"
+                },
+                "Upkeep":{
+                    "Food":42,
+                    "Goods":21,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":46,
+                    "Money":35
+                },
+                "Research":{
+                    "Food":2000,
+                    "Goods":950,
+                    "Metal":0,
+                    "Oil":0,
+                    "Rare":0,
+                    "Money":2750,
+                    "Time":"0:5:00:00"
+                }
+            }
+        },
+        "4":{
+            "Elite": true,
+            "Hitpoints":20,
+            "Speed":39,
+            "ViewRange":42,
+            "AttackRange":0,
+            "Strength":{
+                "Attack":{
+                    "Unarmored":4.0,
+                    "Light":2.0,
+                    "Heavy":1.5,
+                    "Air":1.5,
+                    "Ship":1.0,
+                    "Sub":1.0,
+                    "Building":0.3,
+                    "Morale":0.1
+                 },
+                "Defense":{
+                    "Unarmored":6.0,
+                    "Light":3.0,
+                    "Heavy":2.3,
+                    "Air":2.3,
+                    "Ship":1.5,
+                    "Sub":1.5,
+                    "Building":0.4
+                }
+            },
+            "Cost":{
+                "Production":{
+                    "Food":980,
+                    "Goods":470,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":1010,
+                    "Money":770,
+                    "Time": "0:03:30:00"
+                },
+                "Upkeep":{
+                    "Food":42,
+                    "Goods":21,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":46,
+                    "Money":35
+                },
+                "Research":{
+                    "Food":2000,
+                    "Goods":950,
+                    "Metal":0,
+                    "Oil":0,
+                    "Rare":0,
+                    "Money":2750,
+                    "Time":"0:5:00:00"
+                }
+            }
+        }
+
+    },
+    "Infantry": {
+        "1":{
+            "Hitpoints":15,
+            "Speed":36,
+            "ViewRange":42,
+            "AttackRange":0,
+            "Strength":{
+                "Attack":{
+                    "Unarmored":3.0,
+                    "Light":1.5,
+                    "Heavy":1.0,
+                    "Air":1.0,
+                    "Ship":0.5,
+                    "Sub":0.5,
+                    "Building":0.2,
+                    "Morale":0.1
+                 },
+                "Defense":{
+                    "Unarmored":4.5,
+                    "Light":2.3,
+                    "Heavy":1.5,
+                    "Air":1.5,
+                    "Ship":0.8,
+                    "Sub":0.8,
+                    "Building":0.3
+                }
+            },
+            "Cost":{
+                "Production":{
+                    "Food":930,
+                    "Goods":440,
+                    "Metal":"-",
+                    "Oil":"-",
+                    "Rare":"-",
+                    "Manpower":970,
+                    "Money":660,
                     "Time": "0:02:30:00"
                 },
                 "Upkeep":{
@@ -116,7 +351,7 @@
         }
 
     },
-    "Infantry": {
+    "Motorized Infantry": {
         "1":{
             "Hitpoints":15,
             "Speed":36,

@@ -2,8 +2,14 @@
  * @module domFactory
  * @requires module:customConsole 
  */
-
 import * as CLOG from "./devTools/customConsole.js";
+
+export const SELECT_ELEMENTS = {
+  QS:   document.querySelector.bind(document),
+  QSA:  document.querySelectorAll.bind(document),
+  ID:   document.getElementById.bind(document),
+  CL:   document.getElementsByClassName.bind(document)
+}
 
 /**Creates an HTML Element - inputs: "type", {attributes}, [childrenElements], {eventListener} */
 export class Element {
@@ -19,7 +25,7 @@ export class Element {
    * @example const newButton = new ElementWithListener('button', { id: 'myButton', class: 'btn' },
    * [], 'click', () => * console.log('Button clicked!');});
    */
-  constructor(type, atr, children=[], listener, target=null) {
+  constructor(type, atr, children = [], listener, target = null) {
     this.type = type;
     this.atr = atr;
     this.children = children;
@@ -32,10 +38,7 @@ export class Element {
    * @returns {boolean} Result of validation checks
    */
   validateInput() {
-    /*Initialise Debug (functionName, [array of input variables to Log]*/
-    let fn = CLOG.start(`Element.validateInput(${this.type})`,
-      { "Type": [this.type], "Attribute": [this.atr], "Children": [this.children] });
-
+    let fn = 'Element.validateInput()'
     try { //check type matches list of valid HTML Element types
       if (Element.validTypes.includes(this.type.toLowerCase()) === false) {
         throw new Error(`${this.type} is not a valid HTML element`);
@@ -48,13 +51,12 @@ export class Element {
     };
 
     //Check Attributes is valid object, add empty object if it doesn't exist
-    CLOG.custom("Checking attributes", CLOG.icons.search, fn);
+
     try {
       if (!this.atr || (this.atr && Object.keys(this.atr).length === 0) || this.atr === null) {
         this.atr = {};
-      } else { 
-    CLOG.custom("Attributes valid", CLOG.icons.tick, fn) 
-        };
+      } else {
+      };
     } catch (exception) {
       CLOG.Err(exception.name, exception.message, fn, `Unknown error - see stack:`);
       console.debug(exception.stack);
@@ -62,24 +64,18 @@ export class Element {
     };
 
     //Check if children is array object
-    CLOG.custom('Checking children', CLOG.icons.search, fn);
-
     if (this.children && Array.isArray(this.children) === false) {
       CLOG.Err("Type", "Children must be in an array", fn,)
       return false;
-    } 
+    }
     else {
       if (!this.children || this.children === 'undefined' || this.children === null) {
         //set empty children array
-      CLOG.custom("Children is null or not supplied, setting to empty array", CLOG.icons.message)
         this.children = [];
-      } 
+      }
       else if (this.children.length) {
-      CLOG.custom(`Length of children array: ${this.children.length}`, CLOG.icons.search, fn);
         //for each member, check if Node Element or string
         this.children.forEach(c => {
-
-          CLOG.custom(`Child data type = ${typeof c}`,CLOG.icons.type,fn);
 
           if (typeof c !== 'string' && typeof c !== "HTMLElement") {
             CLOG.Err("Type", `Type of data is ${typeof c}. Children can only be strings or HTMLElements(nodes)`, fn);
@@ -89,7 +85,6 @@ export class Element {
       }
     }
     //check event listener
-    CLOG.end(fn, CLOG.custom(`Validation for ${this.type} is complete`, CLOG.icons.tick, "", true));
     return true;
   }
   /**
@@ -97,28 +92,24 @@ export class Element {
    * @returns 
    */
   create() {
-    let fn = CLOG.start(`Element.create(${this.type})`)
+    let fn = `Element.create(${this.type})`;
     //Try validating the data here, if it fails throw and exit, else continue with creating element
     if (!this.validateInput()) {
       CLOG.Err("Validation", `Validation for ${this.type} failed. Returning null object.`, fn, "Check logs for failed item and resolve")
       return null;
     } else {
-      let fn = CLOG.start(`Element.create(${this.type})`)
       const newEl = document.createElement(this.type);
 
       if (Object.keys(this.atr).length > 0) {
         //Apply each key/value pair found in the options object we pass in.
         for (let a in this.atr) {
-          CLOG.ValueOf({ "Setting next attribute": this.atr }, fn)
-            newEl.setAttribute(a, this.atr[a])
+          newEl.setAttribute(a, this.atr[a])
         };
       }
 
       if (this.children.length !== 0) {
         //Handle children - both strings and anything else
         this.children.forEach(c => {
-        CLOG.ValueOf({ "Adding next child": c }, fn)
-
           if (typeof c === 'string') {
             newEl.appendChild(document.createTextNode(c))
           } else {
@@ -126,15 +117,14 @@ export class Element {
           }
         })
       }
-      if(!Object.is(this.listener,null) && Object.keys(this.listener).length > 0 && this.listener !== null){
-        const {event, listener, opts, capture} = this.listener;
+      if (!Object.is(this.listener, null) && Object.keys(this.listener).length > 0 && this.listener !== null) {
+        const { event, listener, opts, capture } = this.listener;
         newEl.addEventListener(event, listener, opts, capture);
       }
 
-      CLOG.end(fn, `Element created: ${this.type}`)
-      if(this.target && this.target !== null){
+      if (this.target && this.target !== null) {
         this.target.appendChild(newEl);
-      }else return newEl;
+      } else return newEl;
     }
   }
 }
@@ -148,13 +138,12 @@ export class Element {
  * @returns {?Object[]} Only if target is blank or null, returns set of HTML Elements with 
  */
 export function createOptionsSet(input, target) {
-  let fn = CLOG.start(`createOptionSet(${target})`);
+  let fn = `createOptionSet()`
 
   /**@type {Array} output: stores built option Elements to be returned if no target */
   let output = [];
 
   //Analyse data structure of input to determine how to handle it
-    CLOG.custom("Checking structure of input", CLOG.icons.search, fn)
   let str = identifyStructure(input);
 
   switch (str.typeDef) {
@@ -183,15 +172,10 @@ export function createOptionsSet(input, target) {
     case "ObjStrArr": //Object of string category key, array of strings as value: input = {"head_key": ["value", "value"....]}
       for (let key in input) {
 
-        CLOG.ValueOf({ "Key:": key }, fn)
-
         let thisCategory = new Element("optgroup", { "label": [key] }, [], null).create();
 
         input[key].forEach(val => {
           let thisOption = new Element("option", { "value": val }, [val], null).create();
-
-          CLOG.ValueOf({ "thisOption as Element": thisOption }, fn);
-
           thisCategory.appendChild(thisOption);
         })
         target ? document.getElementById(target).appendChild(thisCategory) : output.push(thisCategory);
@@ -211,7 +195,6 @@ export function createOptionsSet(input, target) {
       break;
   }
   if (!target) {
-    CLOG.Custom("Returning output list", "🔙", fn)
     return output;
   }
 }
@@ -232,12 +215,11 @@ export function createOptionsSet(input, target) {
  */
 export function identifyStructure(data) {
 
-  let fn = CLOG.start("identifyStructure", { "Data": data })
+  let fn = `identifyStructure()`
 
   if (Array.isArray(data)) {
     //Check if it's an array of strings
     if (data.every(item => typeof item === 'string')) {
-      CLOG.end(fn,`Structure identified - returning ArrStr`)
       return { typeDef: "ArrStr", hasHeadKey: false };
     }
 
@@ -253,7 +235,6 @@ export function identifyStructure(data) {
     }
     //Check if values are all strings
     if (allStrings) {
-      CLOG.end(fn,`Structure identified - returning ObjStrStr`)
       return { typeDef: "ObjStrStr", hasHeadKey: false };
     }
     // Check if it's an object with string keys leading to arrays
@@ -265,7 +246,6 @@ export function identifyStructure(data) {
       }
     }
     if (allKeyArr) {
-      CLOG.end(fn,`Structure identified - returning ObjStrArr`)
       return { typeDef: "ObjStrArr", hasHeadKey: true };
     }
     // Check if it's an object with string keys leading to objects
@@ -277,21 +257,14 @@ export function identifyStructure(data) {
       }
     }
     if (allKeyObj) {
-      CLOG.end(fn,`Structure identified - returning ObjStrObj`)
       return { typeDef: "ObjStrObj", hasHeadKey: true };
     }
   }
-  CLOG.end(fn,`Structure not identified - returning null`)
   return { typeDef: null, hasHeadKey: null };
 };
 
 export function elementToHTML(element) {
-  let fn = CLOG.start("ElementToHTML");
-  //put in some validation here
-
   let toHTML = element.outerHTML;
-  CLOG.ValueOf({ "Conversion result": toHTML }, fn)
-  CLOG.End(fn)
   return toHTML;
 }
 
@@ -319,7 +292,7 @@ export const getPageID = function () {
  * @param {Object<string,boolean>}
  * @param {boolean} capture 
  */
-export function Listener(event, listener, options={}, capture=false) {
+export function Listener(event, listener, options = {}, capture = false) {
   this.event = event;
   this.listener = listener;
   this.options = options;
@@ -327,8 +300,8 @@ export function Listener(event, listener, options={}, capture=false) {
 };
 
 export function placeholderCallback(event) {
-  const {srcElement:source, type} = event;
-  CLOG.Err("Event",`Placeholder Event triggered by ${type} from ID ${source.id}`,"placeHolder","Replace with approriate function");
+  const { srcElement: source, type } = event;
+  CLOG.Err("Event", `Placeholder Event triggered by ${type} from ID ${source.id}`, "placeHolder", "Replace with approriate function");
 }
 
 

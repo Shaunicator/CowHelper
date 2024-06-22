@@ -1,7 +1,7 @@
 
 
 /**@type {boolean} Toggle to determine whether Custom Logs show or not. True for on, False to turn them off*/
-const ENABLE_LOGS = false;
+const ENABLE_LOGS = true;
 
 /**@type {Object} A collection of emoji icons to be used in C-LOG output */
 export const icons = {

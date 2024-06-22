@@ -43,45 +43,35 @@ getData(request){
       try {
         const response = await fetch(`${url}${query}`);
         if (!response.ok) {
-          throw new Error("Fetch response error");
+          throw new  FetchError(`Request failed with status ${response.status}`);
         }
-        const data = await response.json();
+
+        let data;
+        try{
+          data = await response.json();
+        }
+        catch (jsonError){
+          if (jsonError instanceof SyntaxError) {
+            return jsonError;
+          } else {
+            throw Error("Other JSON error", jsonError);
+          }
+        }
         return data;
+        
       } catch (error) {
-        console.error('Error fetching data:', error);
-        document.getElementsByClassName("infoCard")[0].style.display = "none";
-        alert(`Unable to get data - likely cause, data doesn't exist in the dataset yet.\n${error}`);        
-        throw error; // Re-throw the error if you want to handle it further up the call stack
+        if (error instanceof FetchError){
+          console.error(`Network Error: ${error.message}`)
+        } else {
+        console.error('Other Error:', error);
       }
-    }
-
-
-
-
-
-
-
-/*
-//Notes ==================================================
-try {
-    const result = fetch(url);
-       // do something after request succeeds
-} catch (exception) {
-    // log error
-           // notify user something went wrong
-catch (exception){
-    console.error(exception);
-    alert(exception.message);
-    document.getElementsByClassName("infoCard")[0].style.display = "none"
-async function handleResponse(response) {
-    if (response.status === 204) {
-      return Promise.resolve({});
-    } else if (response.status >= 200 && response.status < 300) {
-      const json = await response.json();
-      return Promise.resolve(json);
-    } else {
-      const error = await response.json();
-      return Promise.reject(error);
+      
     }
   }
-    */
+
+  export class FetchError extends Error {
+    constructor(message) {
+      super(message);
+      this.name = "FetchError";
+    }
+  }

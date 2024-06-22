@@ -24,7 +24,8 @@ app.use('/',express.static(path.join(__dirname, '/public')))
 
 // routes
 app.use('/', require('./routes/root'));
-app.use('/unitData', require('./routes/api/unitData'))
+app.use('/unit-info', require('./routes/root'));
+app.use('/getUnitData', require('./routes/api/unitData'))
 
 
 //Express accepts regex

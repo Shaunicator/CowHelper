@@ -1,46 +1,19 @@
 <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title id="index">CoW Helper: Home</title>
+    <title id="Home">CoW Helper</title>
 
 </head>
 
 
 <body>
-    <script type="module" src="./custom/cow/components/unitSelector.js"></script>
+    <script type="module" src="./custom/cow/components/navbar.js"></script>
     <script type="module" src="index.js"></script>
 
-    <nav>
-        <h1 id="pageHeader"></h1>
-        <h2 id="version"></h2>
-    </nav>
+        <cow-navbar></cow-navbar>
 
-    <cow-unitselector>
-
-    <div class="infoCard">
-        <div class="infoCard-title">
-            <h2>UNIT INFO</h2>
-        </div>
-        <div class="unitPortrait">
-            <div class="unitTypeinfo">
-                <img src="/images/units_portrait/infantry_1_s3.png" data-imageType="unitIcon">
-                <p id="unitType">Infantry Lvl. 1</p>
-            </div>
-        </div>
-        <div class="sectionContainer">
-            <cow-statsTable data-type="overview"></cow-statsTable>
-            <cow-statsTable data-type="combat"></cow-statsTable>
-            <cow-statsTable data-type="costs">
-                <div class="rowLabel">
-                    <img src="/images/icons/Icon_Time.png" data-imageType="label">
-                    <p>Minimumn time to build: </p>
-                    <p id="prod-time"></p>
-                </div>
-            </cow-statsTable>
-        </div>
-
-        <p data-textType="notice"><strong>*Note:</strong> values may be inaccurate during development</p>
-    </div>
-</cow-unitselector>
+    <main style="margin: 20px">
+        <a href="./unit-info.html">Unit Info</a>
 
 
+</main>
 </body>
