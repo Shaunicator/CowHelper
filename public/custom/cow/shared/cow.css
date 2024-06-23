@@ -72,10 +72,10 @@ nav h1, h2, h3{
 .icon-bar.category{
     display: flex;
     align-items: center;
-    background-image: 
+/*     background-image: 
         url(./images/textures/striped_texture_bg.jpg),
         linear-gradient(90deg, rgba(29,27,18,1) 0%, rgba(47,45,34,1) 100%);
-    background-blend-mode: overlay;
+    background-blend-mode: overlay; */
     border-left: solid 1px var(--light);
 }
 
@@ -94,7 +94,8 @@ nav h1, h2, h3{
     flex-direction: column;
     text-decoration: none;*/
     background-image: url(./images/ui/button_empty.png);
-    background-size: cover;
+    background-position: center;
+    background-size: contain;
     background-repeat: no-repeat;
     width: 48px;
     height: 48px;
@@ -103,7 +104,8 @@ nav h1, h2, h3{
     display: inherit;
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+
     transition: all 0.1s ease-out;
 }
 
@@ -174,13 +176,24 @@ filter: drop-shadow(0px 0px 2px rgba(218, 214, 199, 1)) drop-shadow(0px 0px 3px 
 }
 
 /*@media only screen and (min-width: 768px)*/
-@media only screen and (max-width: 844px) {
+@media only screen and (max-width: 480px) {
+    .icon-bar.category {
+        background-image: 
+        url(./images/textures/striped_texture_bg.jpg),
+        linear-gradient(90deg, rgba(29,27,18,1) 0%, rgba(47,45,34,1) 100%);
+    background-blend-mode: overlay;
+    }
+    .icon-bar.category a {
+        height: clamp(48px, 60px,140px);
+        width: auto;
+    }
     .icon-bar, .icon-set {
         display: flex;
         flex-flow: row nowrap;
         width: 100%;
         border-radius: 5px;
         justify-content:space-evenly;
+
     }.icon-set { /*Initially set all sub-menus as hidden*/
         display: none;
     }
