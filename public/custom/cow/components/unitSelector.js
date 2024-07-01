@@ -1,158 +1,115 @@
 /* const template = document.createElement('template');
 template.innerHTML = `
 ` */
-import * as COW_LIST from '../shared/cow_reference.js'
+import * as $COW from '../shared/cow_reference.js'
+import * as $DOM from '../../../utility/domFunctions.js';
+
 
 export class UnitSelect extends HTMLElement {
-    constructor() {
-      super();
-      const imagePath='./custom/cow/shared/images/units'
-      // Create a shadow root, append to Shadow DOM
-      this.attachShadow({ mode: "open" });
+  constructor() {
+    super();
+    const $Doctrine = "Axis";
+    // Create a shadow root, append to Shadow DOM
+    this.attachShadow({ mode: "open" });
+  }
+  connectedCallback() {
+    const _ = {
+      portraits: './custom/cow/shared/images/units/portraits/',
+      svg: './custom/cow/shared/images/icons/icons.svg',
+      doctrine: './custom/cow/shared/images/icons/doctrines/'
     }
-    connectedCallback(){
-      const svgPath = './custom/cow/shared/images/icons/unitCategories/iconDefinitions.svg';
-      this.shadowRoot.innerHTML=`
+
+    this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="./custom/cow/shared/cow.css">
 
-      <div class="container">
-      <div class="icon-bar category" data-type='categories'>
+      <div class="container unit-select">
 
-      <a href="#" data-category="Infantry" title="Infantry">
-        <svg class="i"><use href="${svgPath}#category-infantry"/></svg>
-      </a>
+        <div data-type="doctrine-select"></div>
 
-      <a href="#" data-category="Tanks" title="Tanks">
-        <svg class="i"><use href="${svgPath}#category-tanks"/></svg>
-      </a>
-
-      <a data-category="Ordnance" href="#" >
-        <svg class="i"><use href="${svgPath}#category-ordnance"/></svg>
-      </a>
-
-      <a data-category="Air" href="#">
-        <svg class="i"><use href="${svgPath}#category-air"/></svg>
-      </a>
-
-      <a data-category="Naval" href="#">
-        <svg class="i"><use href="${svgPath}#category-naval"/></svg>
-      </a>
-      <a data-category="Secret" href="#" >
-        <svg class="i"><use href="${svgPath}#category-secret"/></svg>
-      </a>
-
-  </div>
-
-  <div class="icon-bar units" data-type='units'>
-        <div class="icon-set" data-iconset="infantry">
-          <a href="#" data-unittype="Militia">
-            <img src="./custom/cow/shared/images/units/portraits/militia_1.png">
-          </a>
-          <a href="#" data-unittype="Infantry">
-            <img src="./custom/cow/shared/images/units/portraits/infantry_1.png">
-          </a>
-          <a href="#" data-unittype="Motorized Infantry">
-            <img src="./custom/cow/shared/images/units/portraits/motorizedinfantry_1.png">
-          </a>
-          <a href="#" data-unittype="mechanizedinfantry">
-            <img src="./custom/cow/shared/images/units/portraits/mechanizedinfantry_1.png">
-          </a>
-          <a href="#" data-unittype="commando">
-            <img src="./custom/cow/shared/images/units/portraits/commando_1.png">
-          </a>
-          <a href="#" data-unittype="paratrooper">
-            <img src="./custom/cow/shared/images/units/portraits/paratrooper_1.png">
-          </a>
+        <div class="container select-panel">
+          <div class="icon-bar category" data-type='categories'></div>
+          <div class="icon-bar units" data-type='units'></div>
+        </div>
       </div>
-       <div class="icon-set" data-iconset="tanks">
-          <a href="#" data-unittype="armoredcar">
-            <img src="./custom/cow/shared/images/units/portraits/armoredcar_1.png">
-          </a>
-          <a href="#" data-unittype="lighttank">
-            <img src="./custom/cow/shared/images/units/portraits/lighttank_1.png">
-          </a>
-          <a href="#" data-unittype="mediumtank">
-            <img src="./custom/cow/shared/images/units/portraits/mediumtank_1.png">
-          </a>
-          <a href="#" data-unittype="heavytank">
-            <img src="./custom/cow/shared/images/units/portraits/heavytank_1.png">
-          </a>
-          <a href="#" data-unittype="tankdestroyer">
-            <img src="./custom/cow/shared/images/units/portraits/tankdestroyer_1.png">
-          </a>
-    </div>
-          <div class="icon-set" data-iconset="ordnance">
-            <a href="#" data-unittype="antitankgun">
-            <img src="./custom/cow/shared/images/units/portraits/antitankgun_3.png">
-          </a>
-          <a href="#" data-unittype="artillery">
-            <img src="./custom/cow/shared/images/units/portraits/artillery_1.png">
-          </a>
-          <a href="#" data-unittype="antiair">
-            <img src="./custom/cow/shared/images/units/portraits/antiair_1.png">
-          </a>
-          <a href="#" data-unittype="spartillery">
-            <img src="./custom/cow/shared/images/units/portraits/spartillery_1.png">
-          </a>
-          <a href="#" data-unittype="spantiair">
-            <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-          </a>
-    </div>
-           <div class="icon-set" data-iconset="air">
-              <a href="#" data-unittype="interceptor">
-                <img src="./custom/cow/shared/images/units/portraits/interceptor_1.png">
-              </a>
 
-              <a href="#" data-unittype="tacticalbomber">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
+      <div id="unitInfo">
+        <slot></slot>
+      </div>`
 
-              <a href="#" data-unittype="attackbomber">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
+    // Setup Categories
+    const _Categories = Object.getOwnPropertyNames($COW.UNIT_TYPES);
 
-              <a href="#" data-unittype="strategicbomber">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
+    _Categories.forEach(c => {
+      const thisSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      thisSvg.innerHTML = `<use href="${_.svg}#category-${c.toLowerCase()}"></use>`;
 
-              <a href="#" data-unittype="navalbomber">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
-    </div>
-           <div class="icon-set" data-iconset="naval">
-              <a href="#" data-unittype="destroyer">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
-              <a href="#" data-unittype="submarine">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
-              <a href="#" data-unittype="cruiser">
-                <img src="./custom/cow/shared/images/units/portraits/unknown.png">
-              </a>
-          <a  href="#">Battleship</a>
-          <a  href="#">Aircraft Carrier</a>
-          <a  href="#">Troop Transport</a>
-    </div>
-           <div class="icon-set" data-iconset="secret">
-          <a  href="#">Rocket Artillery</a>
-          <a  href="#">SP Rocket Artillery</a>
-          <a  href="#">Rocket Fighter</a>
-          <a  href="#">Flying Bomb/Rocket</a>
-          <a  href="#">Nuclear Bomber </a>
-          <a  href="#">Nuclear Rocket</a>
-    </div>
-  </div>
-  </div>
-  <div id=unitInfo>
-  <slot></slot>
-  </div>`
-  this.setupEventListeners();
-  //end of connectedCallback();
-  }
+      const thisA = document.createElement('a');
+      thisA.dataset.category = c;
+      thisA.title = c;
+      thisA.href = '#';
+      thisA.innerHTML = `${thisSvg.outerHTML}<span>${c}</span>`;
+
+      this.shadowRoot.querySelector("[data-type='categories']").appendChild(thisA);
+
+      const _IconSet = document.createElement('div')
+      _IconSet.dataset.iconset = c.toLowerCase();
+      _IconSet.classList.add("icon-set")
+
+      //Add Units to Icon Set - default is Axis
+      $COW.UNIT_TYPES[c].forEach(u => {
+        //check if Image exists
+        const thisImg = document.createElement('img');
+        const missingImg = `${_.portraits}unknown.png`
+        const _imgUrl = `${_.portraits}axis/${$DOM.removeSpaces(u.toLowerCase())}.png`;
+
+        $DOM.imageExists(_imgUrl).then(exists => {
+          if (exists) { thisImg.src = _imgUrl }
+          else { thisImg.src = missingImg }
+        }).catch((error) => {
+          console.debug('Image not found', error);
+        });
+
+
+        let unitA = document.createElement('a')
+        unitA.dataset.unittype = u;
+        unitA.href = '#';
+        unitA.title = u;
+        unitA.classList.add($DOM.removeSpaces(c.toLowerCase()));
+
+        let unitSpan = document.createElement('span');
+        unitSpan.textContent = u;
+        unitA.appendChild(thisImg);
+        unitA.appendChild(unitSpan);
+        _IconSet.appendChild(unitA);
+      })
+      this.shadowRoot.querySelector("[data-type='units']").appendChild(_IconSet);
+    });
+
+    $COW.DOCTRINES.forEach(d => {
+      const image = document.createElement('img');
+      image.src = `${_.doctrine}${d.toLowerCase()}.png`;
+      const link = document.createElement('a');
+      if (d === "Axis") { link.classList.add("active") }
+      link.href = '#';
+      link.dataset.doctrine = d;
+      link.appendChild(image);
+      const div = this.shadowRoot.querySelector("[data-type='doctrine-select']");
+      div.appendChild(link);
+    })
+
+
+
+
+
+    this.setupEventListeners();
+
+  }//end of connectedCallback();
+
   setupEventListeners() {
     const parentMenuItems = this.shadowRoot.querySelectorAll('.icon-bar.category a');
     const subMenus = this.shadowRoot.querySelectorAll('.icon-bar.units .icon-set');
     const subMenuItems = this.shadowRoot.querySelectorAll('.icon-bar.units a');
+    const doctrines = this.shadowRoot.querySelectorAll("[data-doctrine]");
 
     parentMenuItems.forEach(item => {
       item.addEventListener('click', (event) => {
@@ -187,11 +144,9 @@ export class UnitSelect extends HTMLElement {
         subMenuItems.forEach(i => i.classList.remove('active'));
         item.classList.add('active');
 
-        // Set the unit value
-        //const unitValue = item.textContent.trim();
-
         const unitValue = item.getAttribute('data-unittype');
-
+        //Change unit portrait image on info bar
+        document.querySelector('[data-imageType="unitIcon"]').src = item.children[0].src;
         // Dispatch a custom event with the unit value
         this.dispatchEvent(new CustomEvent('unitSelected', {
           detail: { unitValue },
@@ -200,12 +155,77 @@ export class UnitSelect extends HTMLElement {
         }));
       });
     });
-  }
-};
 
+    doctrines.forEach(item => {
+      item.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        doctrines.forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+
+        const doctrineValue = item.getAttribute('data-doctrine');
+        let unitValue;
+        if (this.shadowRoot.querySelector('[data-unittype].active')) {
+         unitValue = this.shadowRoot.querySelector('[data-unittype].active').getAttribute('data-unittype') || null;
+          
+        };
+
+        console.log("Unit Value: ", unitValue)
+
+        this.dispatchEvent(new CustomEvent('doctrineSelected', {
+          detail: { doctrineValue },
+          data: doctrines,
+          bubbles: true,
+          composed: true
+        }));
+
+        if (unitValue != null) {
+          this.dispatchEvent(new CustomEvent('unitSelected', {
+            detail: { unitValue },
+            bubbles: true,
+            composed: true
+
+          }));
+        }
+      })
+    })
+
+    this.addEventListener('doctrineSelected', this.updateDoctrine.bind(this));
+
+  }//end of setupEventListeners ----------------------------------
+
+  updateDoctrine(event) {
+
+    const portraits = './custom/cow/shared/images/units/portraits/';
+    const missingImg = `${portraits}unknown.png`;
+    const { doctrineValue } = event.detail;
+    this.$Doctrine = doctrineValue;
+
+
+    this.shadowRoot.querySelectorAll('[data-unittype]').forEach($U => {
+      const unitType = $DOM.removeSpaces($U.getAttribute("data-unittype")).toLowerCase();
+      const _imgUrl = `${portraits}${doctrineValue.toLowerCase()}/${unitType}.png`;
+      const thisImg = $U.children[0];
+
+      $DOM.imageExists(_imgUrl).then(exists => {
+        if (exists) { thisImg.src = _imgUrl }
+        else { thisImg.src = missingImg }
+      }).catch((error) => {
+        console.debug('Image not found', error);
+      });
+
+    })
+    //console.log(this.shadowRoot.querySelector(".icon-bar.units"))
+    this.shadowRoot.querySelector(".icon-bar.units").dataset.currentDoctrine = doctrineValue;
+
+
+
+
+  };//end of updateDoctrine --------------------------------------------
+
+
+};//end of UnitSelect Element ===========================================
 customElements.define("cow-unitselector", UnitSelect);
-
-
 
 //=====================================================================================================//
 /**
@@ -219,14 +239,14 @@ export class StatsTable extends HTMLElement {
   }
 
   connectedCallback() {
-/* const node = document.importNode(template.content, true);
-    this.shadowRoot.appendChild(node); */
+    /* const node = document.importNode(template.content, true);
+        this.shadowRoot.appendChild(node); */
     let type = (this.getAttribute('data-type'));
-    if (type !== "overview" && type !== "combat" && type !== "costs" && type !== "research"){
+    if (type !== "overview" && type !== "combat" && type !== "costs" && type !== "research") {
       throw new Error("Invalid Stats Table type - should be overview, combat, costs or research");
     }
-    let config = this.setConfig(type);   
-    
+    let config = this.setConfig(type);
+
     //const headers = this.dataset.headers.split(',').map(header => header.trim());
     const headers = config.headers.split(",").map(header => header.trim());
     this.shadowRoot.innerHTML = `
@@ -250,22 +270,23 @@ export class StatsTable extends HTMLElement {
     </div>`
     this.shadowRoot.querySelector('span#title').textContent = config.title;
     const tableBody = this.shadowRoot.querySelector('tbody');
+
     config.sourceList.forEach(item => {
       const row = document.createElement('tr');
       const headCell = document.createElement('td');
-        headCell.classList.add('rowLabel');
-        headCell.appendChild(document.createElement('img')).src =`${config.iconPath}${config.prefix}${item.toLowerCase()}.png`;
-        headCell.appendChild(document.createElement('span')).innerText = item;
+      headCell.classList.add('rowLabel');
+      headCell.appendChild(document.createElement('img')).src = `${config.iconPath}${config.prefix}${item.toLowerCase()}.png`;
+      headCell.appendChild(document.createElement('span')).innerText = item;
       row.appendChild(headCell);
 
-      for (let i = 1;i <= headers.length-1; i++){
+      for (let i = 1; i <= headers.length - 1; i++) {
         const cell = document.createElement('td')
         cell.setAttribute("data-cellID",
-          headers[i] === "" ? `${item}`: `${headers[i]}-${item}`.trim());
+          headers[i] === "" ? `${item}` : `${headers[i]}-${item}`.trim());
         row.appendChild(cell);
-      }       
-  tableBody.append(row);  
-  })
+      }
+      tableBody.append(row);
+    })
 
   }
 
@@ -273,52 +294,51 @@ export class StatsTable extends HTMLElement {
 
   static get observedAttributes() { return []; }
   attributeChangedCallback(atr, oldValue, newValue) { }
-  
-  setConfig(type){
+
+  setConfig(type) {
 
     const config = {
-      title:"",
-      headers:"",
-      prefix:"",
-      iconPath:"",
-      sourceList:""
+      title: "",
+      headers: "",
+      prefix: "",
+      iconPath: "",
+      sourceList: ""
     }
-    switch (type){
-      case "overview" :
-        config.title="Unit Overview";
-        config.headers=",";
-        config.prefix='';
-        config.iconPath='./custom/cow/shared/images/labels/';
-        config.sourceList = COW_LIST.BASICS;
-      break;
+    switch (type) {
+      case "overview":
+        config.title = "Unit Overview";
+        config.headers = ",";
+        config.prefix = '';
+        config.iconPath = './custom/cow/shared/images/labels/';
+        config.sourceList = $COW.BASICS;
+        break;
       case 'combat':
-        config.title="Combat Statistics";
-        config.headers=",Attack,Defense"
-        config.prefix='class_',
-        config.iconPath = './custom/cow/shared/images/labels/'
-        config.sourceList=COW_LIST.CLASSES
+        config.title = "Combat Statistics";
+        config.headers = ",Attack,Defense"
+        config.prefix = 'class_',
+          config.iconPath = './custom/cow/shared/images/labels/'
+        config.sourceList = $COW.CLASSES
         break;
       case 'costs':
-        config.title="Costs";
-        config.headers=",Production,Upkeep"
+        config.title = "Costs";
+        config.headers = ",Production,Upkeep"
         config.prefix = ''
-        config.iconPath='./custom/cow/shared/images/resources/'
-        config.sourceList=COW_LIST.RESOURCES
+        config.iconPath = './custom/cow/shared/images/resources/'
+        config.sourceList = $COW.RESOURCES
         break;
       case 'research':
-        config.title="Research";
-        config.headers=",Cost";
+        config.title = "Research";
+        config.headers = ",Research,Upgrade";
         config.prefix = '';
-        config.iconPath='./custom/cow/shared/images/resources/';
-        config.sourceList=COW_LIST.RESOURCES;
+        config.iconPath = './custom/cow/shared/images/resources/';
+        config.sourceList = $COW.RESOURCES;
     }
     return config
-    }
-    
+  }
 
-
-  set value(newValue){
+  set value(newValue) {
     this.shadowRoot.querySelector(`td[data-cellID="${newValue.target}"]`).textContent = newValue.value
   }
 };
 customElements.define("cow-statstable", StatsTable);
+

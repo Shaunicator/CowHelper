@@ -40,6 +40,7 @@ getData(request){
     })
 } */
     export async function getData(url, query) {
+      //console.log("Query: ",`${url}${query}`)
       try {
         const response = await fetch(`${url}${query}`);
         if (!response.ok) {

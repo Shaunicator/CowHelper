@@ -6,32 +6,32 @@
 </head>
 
 
-<body>
+<body data-page-id="unit-info">
+    <script src="https://joker876.github.io/more-rounding/dist/index.min.js"></script>
     <script type="module" src="./custom/cow/components/navbar.js"></script>
     <script type="module" src="./custom/cow/components/unitSelector.js"></script>
     <script type="module" src="index.js"></script>
 
         <cow-navbar></cow-navbar>
 
-    <main style="margin: 20px">
+    <main>
     <cow-unitselector>
 
     <div class="infoCard">
-        <div class="infoCard-title">
-            <h2>UNIT INFO</h2>
-        </div>
+
         <div class="unitPortrait">
             <div class="unitTypeinfo">
             <style>
                 [data-imageType = 'levelIcon']{
-                    position: relative;bottom: 10px; left: 50px; z-index: 1;
+                    position: relative; bottom: 10px; right: 20px; z-index: 1;
                     filter: drop-shadow(0px 0px 12px rgba(218, 214, 199, 1));
                 }
-                [data-imageType="unitIcon"] {filter: drop-shadow(0px 0px 12px rgba(218, 214, 199, 0.2));}
+                /* [data-imageType="unitIcon"] {filter: drop-shadow(0px 0px 12px rgba(218, 214, 199, 0.2));} */
                 </style>
 
-            <img src="./custom/cow/shared/images/icons/levels/level1.png" data-imageType="levelIcon">
+            
                 <img src="/images/units_portrait/infantry_1_s3.png" data-imageType="unitIcon">
+                <img src="./custom/cow/shared/images/icons/levels/level1.png" data-imageType="levelIcon">
                     
        
 

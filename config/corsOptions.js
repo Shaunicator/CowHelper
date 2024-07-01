@@ -5,7 +5,7 @@ const whitelist = [
     
 ];
 
-const corsOptions = {
+export const corsOptions = {
     origin: (origin, callback) =>{
         console.log(`[Log]\tOrigin: ${origin}`)
         //remove !origin before production deployment
@@ -17,5 +17,3 @@ const corsOptions = {
     },
     optionsSuccessStatus: 200
 }
-
-module.exports = corsOptions;

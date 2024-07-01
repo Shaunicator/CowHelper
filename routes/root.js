@@ -1,6 +1,14 @@
-const express = require('express');
+
+import express from 'express';
+//const express = require('express');
 const router = express.Router();
-const path = require('path');
+//const router = express.Router();
+import * as path from 'path'
+//const path = require('path');
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename); // get the name of the directory
 
 router.get('^/$|index(.html)?', (request, response) => {
     response.sendFile(path.join(__dirname, '..','index.html'));
@@ -9,4 +17,4 @@ router.get('^/$|unit-info(.html)?', (request, response) => {
     response.sendFile(path.join(__dirname, '..','unit-info.html'));
 });
 
-module.exports = router;
+export { router as root }

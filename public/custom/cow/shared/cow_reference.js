@@ -1,11 +1,13 @@
 export const UNIT_TYPES = {
-    Infantry: ["Militia", "Infantry", "Motorized Infantry", "Mechanized Infantry", "Commandos", "Paratroopers"],
+    Infantry: ["Militia", "Infantry", "Motorized Infantry", "Mechanized Infantry", "Commando", "Paratrooper"],
     Ordnance: ["Anti-Tank Gun", "Artillery", "Self-Propelled Artillery", "Anti-Air Gun", "Self-Propelled Anti-Air"],
-    Tanks: ["Armoured Car", "Light Tank", "Medium Tank", "Heavy Tank", "Tank Destroyer"],
+    Tanks: ["Armored Car", "Light Tank", "Medium Tank", "Heavy Tank", "Tank Destroyer"],
     Air: ["Interceptor", "Tactical Bomber", "Attack Bomber", "Strategic Bomber", "Naval Bomber"],
     Naval: ["Destroyer", "Submarine", "Cruiser", "Battleship", "Aircraft Carrier", "Transport Ship"],
-    Secret: ["Rocket Artillery", "Self-Propelled Rocket Artillery", "Railroad Gun", "Flying Bomb", "Rocket", "Rocket Fighter", "Atomic Bomber", "Nuclear Bomber", "Nuclear Rocket"]
+    Secret: ["Rocket Artillery", "Self-Propelled Rocket Artillery", "Railroad Gun", "Flying Bomb", "Rocket", "Rocket Fighter", "Atomic Bomb", "Nuclear Bomber", "Nuclear Rocket"]
 };
+
+export const DOCTRINES = ["Axis", "Allies", "Comintern", "Panasia"];
 
 export const RESOURCES = ["Food", "Goods", "Metal", "Oil", "Rare", "Manpower", "Money", "Time"];
 export const CLASSES = ["Unarmored", "Light","Heavy","Air","Ship","Sub","Building","Morale"];

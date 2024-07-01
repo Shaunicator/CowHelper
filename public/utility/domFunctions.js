@@ -4,11 +4,27 @@
  */
 import * as CLOG from "./devTools/customConsole.js";
 
+export function imageExists(url) {
+
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => {resolve(false);}
+      img.src = url;
+    });
+
+}
+
+export function removeSpaces(string) {
+  return string.replace(/ /g, "").trim();
+}
+
+
 export const SELECT_ELEMENTS = {
-  QS:   document.querySelector.bind(document),
-  QSA:  document.querySelectorAll.bind(document),
-  ID:   document.getElementById.bind(document),
-  CL:   document.getElementsByClassName.bind(document)
+  QS: document.querySelector.bind(document),
+  QSA: document.querySelectorAll.bind(document),
+  ID: document.getElementById.bind(document),
+  CL: document.getElementsByClassName.bind(document)
 }
 
 /**Creates an HTML Element - inputs: "type", {attributes}, [childrenElements], {eventListener} */

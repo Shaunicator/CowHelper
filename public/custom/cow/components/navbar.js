@@ -14,9 +14,15 @@ this.shadowRoot.innerHTML=`
 <a class="mainTitle" href="index.html">
 
     <h1> Call of War Helper </h1>
-    <span class="version">v0.3.1</span>
+    <span class="version">v0.3.2</span>
 </a>
+
 <h2 id='pageTitle'></h2>
+
+<div class="links">
+    <a href="./unit-info.html">Unit Info</a>
+</div>
+
 </nav>
 `
     }
