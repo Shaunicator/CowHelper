@@ -44,16 +44,12 @@ app.use('/getUnitData', unitData)
 //(xxx)? makes optional
 
 //Moves these to a router in routes/root.js as per subdir.js
-app.get('^/$|/index(.html)?', (request, response) => {
-    response.sendFile('./index.html');
-    //response.sendFile('./index.html', { root: '.'});
-    //response.sendFile(path.join(__dirname, 'index.html'));
-})
+         
 //example for re-directs
-app.get('/old-page(.html)?', (request, response) => {
+/* app.get('/old-page(.html)?', (request, response) => {
     //302 by default (not permanent redirect)
     response.redirect(301, '/new-page.html');
-})
+}) */
 
 app.all('/*', (request, response) => {
     response.status(404);
