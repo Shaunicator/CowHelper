@@ -45,7 +45,8 @@ app.use('/getUnitData', unitData)
 
 //Moves these to a router in routes/root.js as per subdir.js
 app.get('^/$|/index(.html)?', (request, response) => {
-    response.sendFile('./index.html', { root: '.'});
+    response.sendFile('./index.html');
+    //response.sendFile('./index.html', { root: '.'});
     //response.sendFile(path.join(__dirname, 'index.html'));
 })
 //example for re-directs
@@ -57,7 +58,7 @@ app.get('/old-page(.html)?', (request, response) => {
 app.all('/*', (request, response) => {
     response.status(404);
     if (request.accepts('html')){
-        response.sendFile('./views', '404.html')
+        response.sendFile('./views/404.html')
     }
     else if (request.accepts('json')){
         response.json({error: "404 Not found"});
