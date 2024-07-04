@@ -11,10 +11,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename); // get the name of the directory
 
 router.get('^/$|index(.html)?', (request, response) => {
-    response.sendFile('./index.html',{ root: '.' });
+    response.sendFile('./index.html',{ root: '/site/wwwroot' });
 });
 router.get('^/$|unit-info(.html)?', (request, response) => {
-    response.sendFile ('./unit-info.html',{ root: '.' });
+    response.sendFile ('./unit-info.html',{ root: '/site/wwwroot' });
 });
 
 export { router as root }
