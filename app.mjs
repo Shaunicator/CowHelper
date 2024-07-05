@@ -1,19 +1,23 @@
-console.clear;
-console.log("[START]:\t Starting app.mjs script...")
-
+import { root } from './routes/root.js';
+import { unitData } from './routes/api/unitData.js'
 import express from 'express'
-const app = express();
-
 import * as path from 'path'
 import cors from 'cors'
 import { corsOptions } from './config/corsOptions.js';
 import { logger } from './middleware/logEvents.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { error } from 'console';
-
-//https://iamwebwiz.medium.com/how-to-fix-dirname-is-not-defined-in-es-module-scope-34d94a86694d
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
+console.clear;
+console.log("[START]:\t Starting app.mjs script...")
+
+const app = express();
+
+
+//https://iamwebwiz.medium.com/how-to-fix-dirname-is-not-defined-in-es-module-scope-34d94a86694d
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename); // get the name of the directory
 
@@ -31,8 +35,7 @@ app.use(express.json()); //use for getting the json data from a response
 app.use('/',express.static('./public'))
 
 // routes
-import { root } from './routes/root.js';
-import { unitData } from './routes/api/unitData.js'
+
 app.use('/', root);
 app.use('/unit-info', root);
 app.use('/getUnitData', unitData)
@@ -42,8 +45,7 @@ app.use('/getUnitData', unitData)
 //^=Starts with, $=ends "start with", | = or
 //(xxx)? makes optional
 
-//Moves these to a router in routes/root.js as per subdir.js
-         
+       
 //example for re-directs
 /* app.get('/old-page(.html)?', (request, response) => {
     //302 by default (not permanent redirect)
