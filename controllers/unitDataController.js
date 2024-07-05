@@ -1,17 +1,6 @@
-/* 
-const data = {};
-data.e{mployees = require('../data/employees.json'); */
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
 import * as $MR from 'more-rounding';
-//const MR = require('more-rounding');
 import { Duration } from '../public/utility/model-time.js';
-const data = {};
-data.units = require('../data/unitData.json')
-/*     setEmployees: function (data){
-        { this.employees = data }
-    } */
-
+import unitDataFile from '../data/unitData.json' with { type: "json" };
 
 export const getUnitData = (request, response) => {
 
@@ -20,8 +9,8 @@ export const getUnitData = (request, response) => {
     console.log(`>>> REQ: GET UnitData(${unit})`);
     if (request.params.doctrine) {
         console.log(">>> Doctrine: ", request.params.doctrine)
-        if (data.units[unit]) {
-            calculatedUnit = calculateUnitData(data.units[unit], request.params.doctrine)
+        if (unitDataFile[unit]) {
+            calculatedUnit = calculateUnitData(unitDataFile[unit], request.params.doctrine)
         }
     } else {
         response = null;

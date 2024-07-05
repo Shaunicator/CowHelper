@@ -1,7 +1,7 @@
 import { MongoClient } from 'mongodb';
 
 async function main() {
-    //const MongoClient = require('mongodb').MongoClient;
+
     const uri =
       'mongodb+srv://shaunfoster:!=Silvia1212@cowhelper.ddke6jt.mongodb.net/?retryWrites=true&w=majority&appName=CoWHelper'
     const client = new MongoClient(uri);

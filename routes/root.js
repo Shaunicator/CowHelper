@@ -1,10 +1,9 @@
 
 import express from 'express';
-//const express = require('express');
+
 const router = express.Router();
-//const router = express.Router();
 import * as path from 'path'
-//const path = require('path');
+
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
