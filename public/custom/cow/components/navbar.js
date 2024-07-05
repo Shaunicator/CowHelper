@@ -21,6 +21,7 @@ this.shadowRoot.innerHTML=`
 
 <div class="links">
     <a href="./unit-info.html">Unit Info</a>
+    <a href="./tips-and-tricks.html">Tips and Tricks</a>
 </div>
 
 </nav>

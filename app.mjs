@@ -1,4 +1,3 @@
-//const assert = require('assert');
 console.clear;
 console.log("[START]:\t Starting app.mjs script...")
 
