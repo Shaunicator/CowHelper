@@ -1,9 +1,11 @@
-import { root } from './routes/root.js';
+//import { root } from './routes/root.js';
 import { unitData } from './routes/api/unitData.js'
 import express from 'express'
 import fs from 'node:fs/promises';
 // import cors from 'cors'
 // import { corsOptions } from './config/corsOptions.js';
+import pkg from './routes/root.js';
+const { root } = pkg;
 
 
 console.clear;
