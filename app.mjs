@@ -4,8 +4,10 @@ import express from 'express'
 import fs from 'node:fs/promises';
 // import cors from 'cors'
 // import { corsOptions } from './config/corsOptions.js';
-import pkg from './routes/root.js';
-const { root } = pkg;
+import rootApi from './routes/root.js';
+const { root } = rootApi;
+import unitDataApi from './routes/api/unitData.js';
+const { unitData } = unitDataApi;
 
 
 console.clear;
