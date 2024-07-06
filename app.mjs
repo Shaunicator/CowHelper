@@ -3,19 +3,14 @@ import { unitData } from './routes/api/unitData.js'
 import express from 'express'
 import cors from 'cors'
 import { corsOptions } from './config/corsOptions.js';
-import { logger } from './middleware/logEvents.js';
-import { errorHandler } from './middleware/errorHandler.js';
-import { error } from 'console';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+
+//import { fileURLToPath } from 'url';
+//import { dirname } from 'path';
 
 console.clear;
 console.log("[START]:\t Starting app.mjs script...")
 
 const app = express();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename); // get the name of the directory
 
 const PORT = process.env.PORT || 3000;
 
@@ -59,8 +54,6 @@ app.use('/getUnitData', unitData)
         response.type('txt').send('404 not found');
     }
 }) */
-
-//app.use(errorHandler);
 
 //Always at the end of server script
 app.listen(PORT, () =>
