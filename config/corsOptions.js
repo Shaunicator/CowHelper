@@ -2,7 +2,6 @@ const whitelist = [
     'http://localhost:3000',
     'https://cowhelper-dev.azurewebsites.net/'
     //'http://127.0.0.1:5500' //react app using "GoLive",
-    
 ];
 
 export const corsOptions = {

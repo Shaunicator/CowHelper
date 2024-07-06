@@ -1,7 +1,6 @@
 import { root } from './routes/root.js';
 import { unitData } from './routes/api/unitData.js'
 import express from 'express'
-import * as path from 'path'
 import cors from 'cors'
 import { corsOptions } from './config/corsOptions.js';
 import { logger } from './middleware/logEvents.js';
@@ -14,9 +13,6 @@ console.clear;
 console.log("[START]:\t Starting app.mjs script...")
 
 const app = express();
-
-
-//https://iamwebwiz.medium.com/how-to-fix-dirname-is-not-defined-in-es-module-scope-34d94a86694d
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename); // get the name of the directory
@@ -52,7 +48,7 @@ app.use('/getUnitData', unitData)
     response.redirect(301, '/new-page.html');
 }) */
 
-app.all('/*', (request, response) => {
+/* app.all('/*', (request, response) => {
     response.status(404);
     if (request.accepts('html')){
         response.sendFile('./views/404.html')
@@ -62,9 +58,9 @@ app.all('/*', (request, response) => {
     }else{
         response.type('txt').send('404 not found');
     }
-})
+}) */
 
-app.use(errorHandler);
+//app.use(errorHandler);
 
 //Always at the end of server script
 app.listen(PORT, () =>
