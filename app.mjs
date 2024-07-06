@@ -1,7 +1,7 @@
 import { root } from './routes/root.js';
 import { unitData } from './routes/api/unitData.js'
 import express from 'express'
-import cors from 'cors'
+//import cors from 'cors'
 import { corsOptions } from './config/corsOptions.js';
 
 //import { fileURLToPath } from 'url';
@@ -13,6 +13,11 @@ console.log("[START]:\t Starting app.mjs script...")
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+
+async function loadMyModule() {
+    const { cors } = await import('cors');
+  }
+loadMyModule();
 
 // custom middleware logging
 //app.use(logger);
