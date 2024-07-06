@@ -5,8 +5,6 @@ import fs from 'node:fs/promises';
 // import cors from 'cors'
 // import { corsOptions } from './config/corsOptions.js';
 
-//import { fileURLToPath } from 'url';
-//import { dirname } from 'path';
 
 console.clear;
 console.log("[START]:\t Starting app.mjs script...")
