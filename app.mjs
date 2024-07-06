@@ -1,8 +1,8 @@
 import { root } from './routes/root.js';
 import { unitData } from './routes/api/unitData.js'
 import express from 'express'
-//import cors from 'cors'
-import { corsOptions } from './config/corsOptions.js';
+// import cors from 'cors'
+// import { corsOptions } from './config/corsOptions.js';
 
 //import { fileURLToPath } from 'url';
 //import { dirname } from 'path';
@@ -14,15 +14,12 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-async function loadMyModule() {
-    const { cors } = await import('cors');
-  }
-loadMyModule();
+
 
 // custom middleware logging
 //app.use(logger);
 //Cross Origin Resource Sharing
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 //Express 4+ middleware
 app.use(express.urlencoded({ extended: false })); //url encocded for form data
 app.use(express.json()); //use for getting the json data from a response
