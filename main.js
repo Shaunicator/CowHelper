@@ -1,5 +1,5 @@
 import express from 'express'
-import { root } from './routes/root.js';
+import { root } from './routes/root.mjs';
 import { unitData } from './routes/api/unitData.js'
 
 console.clear;

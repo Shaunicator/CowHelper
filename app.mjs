@@ -7,7 +7,7 @@ import fs from 'node:fs/promises';
 // import corsOptionspkg from './config/corsOptions.js';
 // const { corsOptions } = corsOptionspkg;
 
-import rootApi from './routes/root.js';
+import rootApi from './routes/root.mjs';
 const { root } = rootApi;
 import unitDataApi from './routes/api/unitData.js';
 
