@@ -3,7 +3,7 @@
 import express from 'express'
 import fs from 'node:fs/promises';
 import cors from 'cors'
-import { corsOptions } from './config/corsOptions.js';
+import { corsOptionspkg } from './config/corsOptions.js';
 // import corsOptionspkg from './config/corsOptions.js';
 // const { corsOptions } = corsOptionspkg;
 
@@ -26,7 +26,7 @@ const PORT = process.env.PORT || 3000;
 // custom middleware logging
 //app.use(logger);
 //Cross Origin Resource Sharing
-app.use(cors(corsOptions));
+app.use(cors(corsOptionspkg));
 //Express 4+ middleware
 app.use(express.urlencoded({ extended: false })); //url encocded for form data
 app.use(express.json()); //use for getting the json data from a response
