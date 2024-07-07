@@ -11,4 +11,4 @@ router.get('^/$|unit-info(.html)?', (request, response) => {
     response.sendFile ('./unit-info.html',{ root: '.' });//local
 });
 
-export { router as root }
+export default router;

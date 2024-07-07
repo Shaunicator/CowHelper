@@ -10,4 +10,4 @@ router.route('/getUnit/:unit/:doctrine?')
 router.route('/getAll')
     .get(unitDataController.getUnitData_ALL)
 
-export { router as unitData };
+export default router;

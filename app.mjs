@@ -9,7 +9,7 @@ import fs from 'node:fs/promises';
 
 import rootApi from './routes/root.mjs';
 const { root } = rootApi;
-import unitDataApi from './routes/api/unitData.js';
+import unitDataApi from './routes/api/unitData.mjs';
 
 const { unitData } = unitDataApi;
 

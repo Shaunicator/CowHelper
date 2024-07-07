@@ -1,6 +1,6 @@
 import express from 'express'
 import { root } from './routes/root.mjs';
-import { unitData } from './routes/api/unitData.js'
+import { unitData } from './routes/api/unitData.mjs'
 
 console.clear;
 console.log("[START]:\t Starting app.mjs script...")
