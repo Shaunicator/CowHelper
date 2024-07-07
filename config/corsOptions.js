@@ -4,7 +4,7 @@ const whitelist = [
     //'http://127.0.0.1:5500' //react app using "GoLive",
 ];
 
-export const corsOptions = {
+const corsOptions = {
     origin: (origin, callback) =>{
         console.log(`[Log]\tOrigin: ${origin}`)
         //remove !origin before production deployment
@@ -16,3 +16,4 @@ export const corsOptions = {
     },
     optionsSuccessStatus: 200
 }
+export {corsOptions} 
