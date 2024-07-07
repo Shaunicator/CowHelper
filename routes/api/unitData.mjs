@@ -1,5 +1,5 @@
 import express from 'express';
-import * as unitDataController from '../../controllers/unitDataController.js'
+import * as unitDataController from '../../controllers/unitDataController.mjs'
 
 /* You can use an array :
 router.get(['/', '/:param'], myMethod); */
