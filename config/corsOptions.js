@@ -16,4 +16,4 @@ const corsOptions = {
     },
     optionsSuccessStatus: 200
 }
-export {corsOptions as corsOptionspkg} 
+export default corsOptions;
