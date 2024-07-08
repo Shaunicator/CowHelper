@@ -1,6 +1,5 @@
 
-
-export class Duration {
+class Duration {
     /** 
      * @param {Array<Number>|String} time Either an array in days,hours,minutes,seconds(?), or a string in d:h:m:s?, or 0d0h0m0s?
      * @param {string} strFormat Indicator of how string has been split, ":" or "a"
@@ -66,3 +65,4 @@ export class Duration {
     }
 
 };
+module.exports = {Duration}

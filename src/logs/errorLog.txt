@@ -1,0 +1,6 @@
+08-28-2024	20:28:01.281	3c11a0fb-f010-47ee-b710-a6ca784f3274	Error: ENOENT: no such file or directory, stat 'C:\Users\foste\OneDrive\Repos\CowHelper\src\views\index.html'
+08-29-2024	20:29:25.2925	d6235269-3c66-42a6-a593-17a7b92efddb	Error: ENOENT: no such file or directory, stat 'C:\Users\foste\OneDrive\Repos\CowHelper\src\views\index.html'
+08-29-2024	20:29:27.2927	13eeb952-e124-4ff1-bcc7-5ba80f39dfce	Error: ENOENT: no such file or directory, stat 'C:\Users\foste\OneDrive\Repos\CowHelper\src\views\index.html'
+08-52-2024	20:52:18.5218	d4ee3b81-3506-4199-b9db-e4dba3bccf8b	TypeError: Duration is not a constructor
+08-52-2024	20:52:27.5227	c6cbfd87-6646-4ed4-b236-85a0f8b3d9bf	TypeError: Duration is not a constructor
+08-09-2024	21:09:14.914	5400b903-bffa-4450-a251-ba8a81314906	TypeError: Duration is not a constructor

@@ -1,17 +1,19 @@
+import { createRequire } from 'module'
+const require = createRequire(import.meta.url)
+
+
 import * as REF from '../custom/cow/shared/cow_reference.js'
 import * as API from './drq_handler.js'
 //import * as CLOG from './devTools/customConsole.js'
 import { SELECT_ELEMENTS as $ } from './domFunctions.js';
-import { Duration } from './model-time.js';
+//import { Duration } from './model-time.js';
+//const { Duration } = require('./model-time.js') // test is regular .js file using module.exports
 
-/* export const TABLE_NAMES = {
-  "Unit_Overview": "overview",
-  "Combat_Statistics": "combat",
-  "Costs": "costs"
-} */
+
 export let CurrentUnit;
-export function getUnitData(unitType, doctrine = "Axis") {
 
+export function getUnitData(unitType, doctrine = "Axis") {
+  //call API helper function with params to get the data to use to populate the screen
   API.getData('/getUnitData/getUnit/', `${unitType}/${doctrine}`)
 
     .then(dataObject => {
@@ -29,6 +31,7 @@ export function getUnitData(unitType, doctrine = "Axis") {
       }
     })
 }
+
 export function _updateLevelArrow(unit) {
   $.ID('level-up').setAttribute('disabled', '');
   $.ID('level-down').removeAttribute('disabled', '');
