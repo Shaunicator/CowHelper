@@ -1,5 +1,5 @@
-import { createRequire } from 'node:module'
-const require = createRequire(import.meta.url)
+//import { createRequire } from 'node:module'
+//const require = createRequire(import.meta.url)
 
 
 import * as REF from '../custom/cow/shared/cow_reference.js'
