@@ -1,9 +1,16 @@
 //import * as $MR from 'more-rounding';
+//import unitDataFile from '../data/unitData.json' with { type: "json" };
+
 const $MR = require('more-rounding');
 const { Duration } = require('../../public/utility/model-time.js')
-const data = {};
-data.units = require('../data/units.json')
-//import unitDataFile from '../data/unitData.json' with { type: "json" };
+
+const { data } = require('../middleware/_modules.js')
+
+
+//const data = {};
+//data.units = require('../data/units.json')
+
+
 
 
 const getUnitData = (request, response) => {

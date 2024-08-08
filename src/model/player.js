@@ -1,4 +1,5 @@
-export class Player {
+console.log("Loading module: Player")
+class Player {
 
     userName;
     startingFaction; //this could be changed to something less specific
@@ -18,3 +19,5 @@ export class Player {
         this.score = newScore;
     }
 }
+
+exports.player = Player;

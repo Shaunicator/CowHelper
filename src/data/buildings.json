@@ -1,0 +1,16 @@
+{
+    "Aircraft Factory": {
+        "1": {
+            "Hitpoints": 20,
+            "Cost": {
+                "Food": 0,
+                "Goods": 1300,
+                "Metal": 600,
+                "Oil": 0,
+                "Rare": 1700,
+                "Money": 3600,
+                "Time": "0:00:2:00"
+            }
+        }
+    }
+}

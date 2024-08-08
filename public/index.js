@@ -3,7 +3,6 @@ import { SELECT_ELEMENTS as $ } from './utility/domFunctions.js';
 //import * as CLOG from "./utility/devTools/customConsole.js";
 import * as COW_LIST from "./custom/cow/shared/cow_reference.js";
 //import { UNIT_TYPES } from "/utility/ref_data.js";
-import * as TEST from "/utility/unitTests.js";
 import * as _API from "./utility/cow_UnitData.js";
 
 
